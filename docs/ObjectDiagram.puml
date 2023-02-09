@@ -16,6 +16,12 @@ object goblin
 object human
 object characterGoals
 object attackOpponent
+object defend
+object fury
+object fears
+object extraPower
+object heroesGoals
+object beastsGoals  
 
 object gameGoals
 object createHeroesArmy
@@ -32,6 +38,7 @@ object name
 LordOfTheRings *-- turns
 LordOfTheRings *-- army
 LordOfTheRings o-- gameGoals
+LordOfTheRings *-- combatHistory
 
 army *-- characters
 turns --> army
@@ -43,7 +50,6 @@ gameGoals <|-- createBeastsArmy
 
 turns o-- turnGoals
 turnGoals <|-- combat
-turnGoals <|-- throwDices
 turnGoals <|-- calculateDamageDealt
 
 characters *-- name
@@ -60,4 +66,14 @@ heroes <|-- human
 
 characters o-- characterGoals
 characterGoals <|-- attackOpponent 
+characterGoals <|-- defend
+characterGoals<|-- throwDices
+
+heroes <|-- heroesGoals
+heroesGoals <|-- fears
+heroesGoals <|-- fury
+
+beasts <|-- beastsGoals 
+beastsGoals <|--extraPower
+
 @enduml

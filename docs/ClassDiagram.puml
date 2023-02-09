@@ -1,91 +1,133 @@
 @startuml LordOfTheRings
 
-class LordOfTheRings{
-    -Army heroeArmy
-    -Army beastArmy
-    -Turn turn
+package com.lordoftherings{
+    class LordOfTheRings{
+        -Army heroeArmy
+        -Army beastArmy
+        -Turn turn
+        -CombatHistory combatHistory
 
-    +void setup()
-    +void execute()
-    +void createBeastsArmy()
-    +void createHeroesArmy()
-}
+        +void setup()
+        +void execute()
+        +void createBeastsArmy()
+        +void createHeroesArmy()
+    }
 
-class Turn{
-    -Army heroeArmy
-    -Army beastArmy
-    -int heroeAttack
-    -int beastAttack
-    -int damageDealt
+    class Turn{
+        -Army heroeArmy
+        -Army beastArmy
+        -int heroeAttack
+        -int beastAttack
+        -int damageDealt
+        -CombatHistory combatHistory
 
-    +Turn(Army heroeArmy, Army beastArmy)
-    -CombatHistory combatHistory
-    +void combat()
-    +int calculateDamageDealt()
-    +int throwDices(Character character)
-    +void showTurnResults(int currentTurn, Character heroe, Character beast)
-}
+        +Turn(Army heroeArmy, Army beastArmy, CombatHistory combatHistory)
+        +void combat()
+        +int calculateDamageDealt()
+        +void showTurnResults(int currentTurn, Character heroe, Character beast)
+    }
 
-class CombatHistory{
-    -int turnNumber
-    -Character winner
-    -Character loser
+    class CombatHistory{
+        -int turnNumber
+        -Character winner
+        -Character loser
+        -int damage
 
-    +CombatHistory(int turnNumber, Character winner, Character loser)
-}
+        +CombatHistory(int turnNumber, Character winner, Character loser, int damage)
+    }
 
-class Army{
-    -ArrayList<Character> army
+    package characters{
+        enum characterType{
+            HUMAN
+            ELF
+            HOBBIT
+            ORC
+            GOBLIN
+        }
 
-    +Army()
-    +ArrayList<Character> getArmy()
-    +void setArmy(Character character)
-}
+        abstract class Character{
+            #enum characterType
+            -String name
+            -int lifePoints
+            -int shieldResistance
 
-abstract class Character{
-    -String name
-    -int lifePoints
-    -int shieldResistance
+            +Character(String name, int lifePoints, int shieldResistance)
+            +abstract boolean isHeroe()
+            +abstract int attackOpponent(Character character)
+            +abstract int defend(Character character)
+            +abstract int throwDices()
+            +abstract int getCharacterType()
+        }
 
-    +Character(String name, int lifePoints, int shieldResistance)
-    +abstract boolean isHeroe()
-}
+        package heroes{
+            abstract class Heroe{
+                +boolean isHeroe()
+                +int throwDices()
+                +abstract boolean fears(Character character)
+                +abstract boolean hates(Character character)
+                +abstract int attackOpponent(Character character)
+                +abstract int defend(Character character)
+                +abstract int getCharacterType()
+            }
 
-abstract class Heroe{
-    #enum characterType
-    +boolean isHeroe()
-    +abstract boolean isElf()
-}
+            class Human{            
+                +int getCharacterType()
+                +int attackOpponent(Character character)
+                +int defend(Character character)
+                +boolean fears(Character character)
+                +boolean hates(Character character)
+            }
 
-enum characterType{
-    ELF
-    HOBBIT
-    ORC
-    GOBLIN
-}
+            class Elf{
+                +int getCharacterType()
+                +int attackOpponent(Character character)
+                +int defend(Character character)
+                +boolean fears(Character character)
+                +boolean hates(Character character)
+            }
 
-class Elf{
-    +int hates()
-    +boolean isElf()
-}
+            class Hobbit{
+                +int getCharacterType()
+                +int attackOpponent(Character character)
+                +int defend(Character character)
+                +boolean fears(Character character)
+                +boolean hates(Character character)
+            }
+        }
 
-class Hobbit{
-    +int fears()
-    +boolean isElf()
-}
+        package beasts{
+            abstract class Beast{
+                +boolean isHeroe()
+                +int throwDices()
+                +abstract boolean extraPower()
+                +abstract int attackOpponent(Character character)
+                +abstract int defend(Character character)
+                +abstract int getCharacterType()
+            }
 
-abstract class Beast{
-    #enum characterType
-    +boolean isHeroe()
-    +abstract boolean isOrc()
-}
+            class Orc{
+                +boolean extraPower()
+                +int attackOpponent(Character character)
+                +int defend(Character character)
+                +int getCharacterType()
+            }
 
-class Orc{
-    +boolean isOrc()
-}
+            class Goblin{
+                +boolean extraPower()
+                +int attackOpponent(Character character)
+                +int defend(Character character)
+                +int getCharacterType()
+            }
+        }
+    }
 
-class Goblin{
-    +boolean isOrc()
+    class Army{
+        -ArrayList<Character> army
+
+        +Army()
+        +ArrayList<Character> getArmy()
+        +void setArmy(Character character)
+    }
 }
 
 LordOfTheRings *-- Turn
@@ -96,6 +138,7 @@ Army *-- Character
 Character <|-- Heroe
 Character <|-- Beast
 
+Heroe <|-- Human
 Heroe <|-- Elf
 Heroe <|-- Hobbit
 

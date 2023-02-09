@@ -1,0 +1,52 @@
+@startuml
+
+object LordOfTheRings
+
+object characters
+object heroes
+object beasts
+object army
+object throwDices
+object calculateDamageDealt
+object combatHistory
+
+object gameGoals
+object createHeroesArmy
+object createBeastsArmy
+object combat
+object armyGoals
+object win
+
+object turns
+object turnGoals
+
+object lifePoints
+object shieldResistance
+object name
+
+LordOfTheRings *-- turns
+LordOfTheRings *-- army
+LordOfTheRings o-- gameGoals
+
+army *-- characters
+turns --> army
+characters <|-- heroes
+characters <|-- beasts
+
+gameGoals <|-- createHeroesArmy
+gameGoals <|-- createBeastsArmy
+
+turns o-- turnGoals
+turnGoals <|-- combat
+turnGoals <|-- throwDices
+turnGoals <|-- calculateDamageDealt
+
+army o-- armyGoals
+armyGoals <|-- win
+characters *-- name
+characters *-- lifePoints
+characters *-- shieldResistance
+
+turns --> combatHistory
+
+@enduml

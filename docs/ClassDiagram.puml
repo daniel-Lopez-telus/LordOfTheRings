@@ -1,0 +1,107 @@
+@startuml LordOfTheRings
+
+class LordOfTheRings{
+    -Army heroeArmy
+    -Army beastArmy
+    -Turn turn
+
+    +void setup()
+    +void execute()
+    +void createBeastsArmy()
+    +void createHeroesArmy()
+}
+
+class Turn{
+    -Army heroeArmy
+    -Army beastArmy
+    -int heroeAttack
+    -int beastAttack
+    -int damageDealt
+
+    +Turn(Army heroeArmy, Army beastArmy)
+    -CombatHistory combatHistory
+    +void combat()
+    +int calculateDamageDealt()
+    +int throwDices(Character character)
+    +void showTurnResults(int currentTurn, Character heroe, Character beast)
+}
+
+class CombatHistory{
+    -int turnNumber
+    -Character winner
+    -Character loser
+
+    +CombatHistory(int turnNumber, Character winner, Character loser)
+}
+
+class Army{
+    -ArrayList<Character> army
+
+    +Army()
+    +ArrayList<Character> getArmy()
+    +void setArmy(Character character)
+}
+
+abstract class Character{
+    -String name
+    -int lifePoints
+    -int shieldResistance
+
+    +Character(String name, int lifePoints, int shieldResistance)
+    +abstract boolean isHeroe()
+}
+
+abstract class Heroe{
+    #enum characterType
+    +boolean isHeroe()
+    +abstract boolean isElf()
+}
+
+enum characterType{
+    ELF
+    HOBBIT
+    ORC
+    GOBLIN
+}
+
+class Elf{
+    +int hates()
+    +boolean isElf()
+}
+
+class Hobbit{
+    +int fears()
+    +boolean isElf()
+}
+
+abstract class Beast{
+    #enum characterType
+    +boolean isHeroe()
+    +abstract boolean isOrc()
+}
+
+class Orc{
+    +boolean isOrc()
+}
+
+class Goblin{
+    +boolean isOrc()
+}
+
+LordOfTheRings *-- Turn
+LordOfTheRings *-- Army
+
+Army *-- Character
+
+Character <|-- Heroe
+Character <|-- Beast
+
+Heroe <|-- Elf
+Heroe <|-- Hobbit
+
+Beast <|-- Orc
+Beast <|-- Goblin
+
+CombatHistory <-- Turn
+
+@enduml

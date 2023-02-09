@@ -9,13 +9,15 @@ object army
 object throwDices
 object calculateDamageDealt
 object combatHistory
+object elf
+object hobbit
+object orc
+object goblin
 
 object gameGoals
 object createHeroesArmy
 object createBeastsArmy
 object combat
-object armyGoals
-object win
 
 object turns
 object turnGoals
@@ -41,12 +43,14 @@ turnGoals <|-- combat
 turnGoals <|-- throwDices
 turnGoals <|-- calculateDamageDealt
 
-army o-- armyGoals
-armyGoals <|-- win
 characters *-- name
 characters *-- lifePoints
 characters *-- shieldResistance
 
 turns --> combatHistory
 
+heroes <|-- elf
+heroes <|-- hobbit
+beasts <|-- orc
+beasts <|-- goblin
 @enduml

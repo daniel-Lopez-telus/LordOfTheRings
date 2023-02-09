@@ -13,6 +13,9 @@ object elf
 object hobbit
 object orc
 object goblin
+object human
+object characterGoals
+object attackOpponent
 
 object gameGoals
 object createHeroesArmy
@@ -53,4 +56,8 @@ heroes <|-- elf
 heroes <|-- hobbit
 beasts <|-- orc
 beasts <|-- goblin
+heroes <|-- human
+
+characters o-- characterGoals
+characterGoals <|-- attackOpponent 
 @enduml

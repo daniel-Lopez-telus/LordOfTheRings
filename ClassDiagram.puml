@@ -1,5 +1,5 @@
 @startuml
 
-class main
+class main 
 
 @enduml

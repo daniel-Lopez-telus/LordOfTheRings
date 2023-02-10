@@ -3,7 +3,10 @@ package Game.characters;
 public class Goblin extends Beast{
 
     public Goblin(String name, int lifePoints, int shieldResistance) {
-        super(name, lifePoints, shieldResistance);
+        super(name, shieldResistance);
+        this.name = name;
+        lifePoints = 200;
+        this.shieldResistance = shieldResistance;
     }
 
     @Override

@@ -10,13 +10,12 @@ public abstract class Character {
         GOBLIN
     };
     
-    private String name;
-    private int lifePoints;
-    private int shieldResistance;
+    protected String name;
+    protected int lifePoints;
+    protected int shieldResistance;
 
-    public Character(String name, int lifePoints, int shieldResistance){
+    public Character(String name, int shieldResistance){
         this.name = name;
-        this.lifePoints = lifePoints;
         this.shieldResistance = shieldResistance;
     }
 

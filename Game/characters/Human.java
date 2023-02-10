@@ -2,8 +2,13 @@ package Game.characters;
 
 public class Human extends Heroe {
 
-    public Human(String name, int lifePoints, int shieldResistance) {
-        super(name, lifePoints, shieldResistance);
+
+    public Human(String name, int shieldResistance) {
+        super(name, shieldResistance);
+        this.name = name;
+        lifePoints = 180;
+        this.shieldResistance = shieldResistance;
+
     }
 
     @Override

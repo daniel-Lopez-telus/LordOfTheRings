@@ -2,8 +2,11 @@ package Game.characters;
 
 public class Hobbit extends Heroe{
 
-    public Hobbit(String name, int lifePoints, int shieldResistance) {
-        super(name, lifePoints, shieldResistance);
+    public Hobbit(String name, int shieldResistance) {
+        super(name, shieldResistance);
+        this.name = name;
+        lifePoints = 200;
+        this.shieldResistance = shieldResistance;
     }
 
     @Override

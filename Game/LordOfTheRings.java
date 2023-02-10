@@ -8,15 +8,22 @@ public class LordOfTheRings {
     private CombatHistory CombatHistory;
 
     public void execute(){
-        setup();
+        //TODO
     }
 
-    private void setup (){
+    public void setup (){
         createBeastsArmy();
         createHeroesArmy();
+        turn = new Turn(heroeArmy, beastArmy);
     }
 
-    private 
+    private void createBeastsArmy(){
+        //TODO
+    }
+
+    private void createHeroesArmy(){
+        //TODO
+    }
 
 
 }

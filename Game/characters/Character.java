@@ -2,7 +2,13 @@ package Game.characters;
 
 public abstract class Character {
     
-    enum Character;
+    protected enum Characters{
+        HUMAN,
+        ELF,
+        HOBBIT,
+        ORC,
+        GOBLIN
+    };
     private String name;
     private int lifePoints;
     private int shieldResistance;

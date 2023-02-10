@@ -9,7 +9,7 @@ public class LordOfTheRings {
     private Army heroeArmy;
     private Army beastArmy;
     private Turn turn;
-    private CombatHistory CombatHistory;
+    private CombatHistory combatHistory;
 
     public void execute(){
        turn.combat();

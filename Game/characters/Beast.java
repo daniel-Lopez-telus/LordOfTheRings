@@ -1,7 +1,5 @@
 package Game.characters;
 
-import java.util.Random;
-
 import Game.Dice;
 
 public abstract class Beast extends Character{

@@ -10,8 +10,8 @@ public class Army {
     
     ArrayList<Creature> army;
 
-    public Army(){
-        this.army = new ArrayList<>();
+    public Army(int size){
+        this.army = new ArrayList<>(size);
     }
 
     public void insertIntoArmy(Creature creature){

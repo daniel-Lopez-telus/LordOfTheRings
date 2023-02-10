@@ -20,10 +20,18 @@ public class Console {
     }
 
     public static String getString(){
-        return scanner.nextLine();
+        String line = scanner.nextLine();
+        if(line.isEmpty()){
+            scanner.nextLine();
+        }
+        return line;
     }
 
     public static String getStringNext(){
-        return scanner.next();
+        String line = scanner.next();
+        if(line.isBlank()){
+            System.out.println("Invalid input");
+        }
+        return line;
     }
 }

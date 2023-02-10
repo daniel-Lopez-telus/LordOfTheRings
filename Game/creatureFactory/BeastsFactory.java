@@ -7,10 +7,10 @@ import Game.creatures.Orc;
 public class BeastsFactory implements AbstractCreaturerFactory{
 
     @Override
-    public Creature createCreature(String type,String name,int shieldResistance) {
+    public Creature createCreature(int type,String name,int shieldResistance) {
         Creature myCharacter = switch (type) {
-            case "Orc" -> new Orc(name,shieldResistance);
-            case "Goblin" -> new Goblin(name,shieldResistance);
+            case 4 -> new Orc(name,shieldResistance);
+            case 5 -> new Goblin(name,shieldResistance);
             default -> null;
         };
         return myCharacter;

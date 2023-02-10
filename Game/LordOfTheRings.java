@@ -3,6 +3,7 @@ package Game;
 import Game.creatureFactory.AbstractCreaturerFactory;
 import Game.creatureFactory.BeastsFactory;
 import Game.creatureFactory.HeroesFactory;
+import Game.utils.Console;
 
 public class LordOfTheRings {
     

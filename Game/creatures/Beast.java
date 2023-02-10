@@ -1,6 +1,6 @@
 package Game.creatures;
 
-import Game.Dice;
+import Game.utils.Dice;
 
 public abstract class Beast extends Creature{
 

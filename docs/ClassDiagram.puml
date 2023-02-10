@@ -128,6 +128,11 @@ package com.lordoftherings{
         +ArrayList<Character> getArmy()
         +void setArmy(Character character)
     }
+
+    abstract class AbstractArmyFactory {
+        Character createHeroe()
+        Character createBeast()
+    }
 }
 
 LordOfTheRings *-- Turn
@@ -146,5 +151,8 @@ Beast <|-- Orc
 Beast <|-- Goblin
 
 CombatHistory <-- Turn
+
+Army ..> AbstractArmyFactory
+
 
 @enduml

@@ -12,7 +12,9 @@ public class Army {
         setArmy();
     }
 
-    private void setArmy(Character character){}
+    private void setArmy(Character character){
+        
+    }
 
     public ArrayList<Character> getArmy(){}
 }

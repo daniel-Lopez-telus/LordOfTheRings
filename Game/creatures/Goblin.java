@@ -1,8 +1,8 @@
-package Game.characters;
+package Game.creatures;
 
-public class Orc extends Beast{
+public class Goblin extends Beast{
 
-    public Orc(String name, int shieldResistance) {
+    public Goblin(String name, int shieldResistance) {
         super(name, shieldResistance);
         this.name = name;
         lifePoints = 200;
@@ -16,20 +16,20 @@ public class Orc extends Beast{
     }
 
     @Override
-    public int attackOpponent(Character character) {
+    public int attackOpponent(Creature character) {
         // TODO Auto-generated method stub
         return 0;
     }
 
     @Override
-    public int defend(Character character) {
+    public int defend(Creature character) {
         // TODO Auto-generated method stub
         return 0;
     }
 
     @Override
     public int getCharacterType() {
-        return Characters.ORC.ordinal();
+        return Creatures.GOBLIN.ordinal();
     }
     
 }

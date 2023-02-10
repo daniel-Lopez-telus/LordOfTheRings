@@ -1,8 +1,8 @@
-package Game.characters;
+package Game.creatures;
 
-public class Goblin extends Beast{
+public class Hobbit extends Heroe{
 
-    public Goblin(String name, int lifePoints, int shieldResistance) {
+    public Hobbit(String name, int shieldResistance) {
         super(name, shieldResistance);
         this.name = name;
         lifePoints = 200;
@@ -10,26 +10,32 @@ public class Goblin extends Beast{
     }
 
     @Override
-    public boolean extraPower() {
+    public boolean fears(Creature character) {
         // TODO Auto-generated method stub
         return false;
     }
 
     @Override
-    public int attackOpponent(Character character) {
+    public boolean hates() {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public int attackOpponent(Creature character) {
         // TODO Auto-generated method stub
         return 0;
     }
 
     @Override
-    public int defend(Character character) {
+    public int defend(Creature character) {
         // TODO Auto-generated method stub
         return 0;
     }
 
     @Override
     public int getCharacterType() {
-        return Characters.GOBLIN.ordinal();
+        return Creatures.HOBBIT.ordinal();
     }
     
 }

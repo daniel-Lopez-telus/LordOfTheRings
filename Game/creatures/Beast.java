@@ -1,8 +1,8 @@
-package Game.characters;
+package Game.creatures;
 
 import Game.Dice;
 
-public abstract class Beast extends Character{
+public abstract class Beast extends Creature{
 
     public Beast(String name, int shieldResistance) {
         super(name, shieldResistance);
@@ -18,9 +18,9 @@ public abstract class Beast extends Character{
     
     public abstract boolean extraPower();
 
-    public abstract int attackOpponent(Character character);
+    public abstract int attackOpponent(Creature character);
 
-    public abstract int defend(Character character);
+    public abstract int defend(Creature character);
 
     public abstract int getCharacterType();
     

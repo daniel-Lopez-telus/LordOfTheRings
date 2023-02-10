@@ -1,16 +1,18 @@
-package Game.characters;
+package Game.creatures;
 
-public class Hobbit extends Heroe{
+public class Human extends Heroe {
 
-    public Hobbit(String name, int shieldResistance) {
+
+    public Human(String name, int shieldResistance) {
         super(name, shieldResistance);
         this.name = name;
-        lifePoints = 200;
+        lifePoints = 180;
         this.shieldResistance = shieldResistance;
+
     }
 
     @Override
-    public boolean fears(Character character) {
+    public boolean fears(Creature character) {
         // TODO Auto-generated method stub
         return false;
     }
@@ -22,20 +24,20 @@ public class Hobbit extends Heroe{
     }
 
     @Override
-    public int attackOpponent(Character character) {
+    public int attackOpponent(Creature character) {
         // TODO Auto-generated method stub
         return 0;
     }
 
     @Override
-    public int defend(Character character) {
+    public int defend(Creature character) {
         // TODO Auto-generated method stub
         return 0;
     }
 
     @Override
     public int getCharacterType() {
-        return Characters.HOBBIT.ordinal();
+        return Creatures.HUMAN.ordinal();
     }
     
 }

@@ -1,41 +1,35 @@
-package Game.characters;
+package Game.creatures;
 
-public class Elf extends Heroe{
+public class Orc extends Beast{
 
-    public Elf(String name, int shieldResistance) {
+    public Orc(String name, int shieldResistance) {
         super(name, shieldResistance);
         this.name = name;
-        lifePoints = 250;
+        lifePoints = 200;
         this.shieldResistance = shieldResistance;
     }
 
     @Override
-    public boolean fears(Character character) {
+    public boolean extraPower() {
         // TODO Auto-generated method stub
         return false;
     }
 
     @Override
-    public boolean hates() {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public int attackOpponent(Character character) {
+    public int attackOpponent(Creature character) {
         // TODO Auto-generated method stub
         return 0;
     }
 
     @Override
-    public int defend(Character character) {
+    public int defend(Creature character) {
         // TODO Auto-generated method stub
         return 0;
     }
 
     @Override
     public int getCharacterType() {
-        return Characters.ELF.ordinal();
+        return Creatures.ORC.ordinal();
     }
     
 }

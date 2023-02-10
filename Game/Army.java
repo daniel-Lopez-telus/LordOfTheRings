@@ -2,21 +2,23 @@ package Game;
 
 import java.util.ArrayList;
 
-import Game.characters.Character;
+import Game.creatures.Creature;
+
+
 
 public class Army {
     
-    ArrayList<Character> army;
+    ArrayList<Creature> army;
 
     public Army(){
         this.army = new ArrayList<>();
     }
 
-    public void insertIntoArmy(Character character){
-        army.add(character);
+    public void insertIntoArmy(Creature creature){
+        army.add(creature);
     }
 
-    public ArrayList<Character> getArmy() {
+    public ArrayList<Creature> getArmy() {
         return army;
     }
 }

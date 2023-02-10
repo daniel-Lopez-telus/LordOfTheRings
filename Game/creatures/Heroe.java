@@ -1,8 +1,8 @@
-package Game.characters;
+package Game.creatures;
 
 import Game.Dice;
 
-public abstract class Heroe extends Character {
+public abstract class Heroe extends Creature {
     
     public Heroe(String name, int shieldResistance) {
         super(name, shieldResistance);
@@ -19,13 +19,13 @@ public abstract class Heroe extends Character {
         return Math.max(firstDice, secondDice);
     }
 
-    public abstract boolean fears(Character character);
+    public abstract boolean fears(Creature character);
 
     public abstract boolean hates();
 
-    public abstract int attackOpponent(Character character);
+    public abstract int attackOpponent(Creature character);
 
-    public abstract int defend(Character character);
+    public abstract int defend(Creature character);
 
     public abstract int getCharacterType();
 

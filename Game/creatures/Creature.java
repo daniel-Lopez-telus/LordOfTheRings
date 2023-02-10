@@ -1,8 +1,8 @@
-package Game.characters;
+package Game.creatures;
 
-public abstract class Character {
+public abstract class Creature {
     
-    protected enum Characters{
+    protected enum Creatures{
         HUMAN,
         ELF,
         HOBBIT,
@@ -14,16 +14,16 @@ public abstract class Character {
     protected int lifePoints;
     protected int shieldResistance;
 
-    public Character(String name, int shieldResistance){
+    public Creature(String name, int shieldResistance){
         this.name = name;
         this.shieldResistance = shieldResistance;
     }
 
     public abstract boolean isHeroe();
 
-    public abstract int attackOpponent(Character Character);
+    public abstract int attackOpponent(Creature Character);
 
-    public abstract int defend(Character Character);
+    public abstract int defend(Creature Character);
 
     public abstract int throwDices();
 

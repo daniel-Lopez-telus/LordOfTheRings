@@ -1,6 +1,6 @@
 package Game;
 
-import Game.characters.Character;
+import Game.creatures.Creature;
 
 public class Turn {
     
@@ -15,7 +15,7 @@ public class Turn {
     public Turn(Army heroeArmy, Army beastArmy) {
         this.heroeArmy = heroeArmy;
         this.beastArmy = beastArmy;
-        this.CombatHistory = combatHistory;
+        this.combatHistory = new CombatHistory();
         combatHistory = new CombatHistory();
     } 
 
@@ -25,9 +25,10 @@ public class Turn {
 
     private int calculateDamageDealt(){
         //TODO
+        return 0;
     }
 
-    private void showTurnResults(int currenTurn, Character heroe, Character beast){
+    private void showTurnResults(int currenTurn, Creature heroe, Creature beast){
         //TODO
     }
     

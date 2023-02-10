@@ -1,11 +1,11 @@
 package Game;
 
-import Game.characters.Character;
+import Game.creatures.Creature;
 
 public class CombatHistory {
     
     private int turnNumber;
     private int damage;
-    private Character winner;
-    private Character loser;
+    private Creature winner;
+    private Creature loser;
 }

@@ -1,28 +1,32 @@
 package Game.characters;
 
-import java.util.Random;
+import Game.Dice;
 
-public abstract class Heroe {
+public abstract class Heroe extends Character {
     
-    boolean isHeroe(){
+    public Heroe(String name, int lifePoints, int shieldResistance) {
+        super(name, lifePoints, shieldResistance);
+    }
+
+    public boolean isHeroe(){
         return true;  
     }
 
-    int throwDices(){
-        Random myRandom = new Random();
-        //implementacion del metodo 
-        //if()
-        return 0;
+    @Override
+    public int throwDices(){
+        int firstDice = Dice.throwDice(100);
+        int secondDice = Dice.throwDice(100);
+        return Math.max(firstDice, secondDice);
     }
 
-    abstract boolean fears(Character character);
+    public abstract boolean fears(Character character);
 
-    abstract boolean hates();
+    public abstract boolean hates();
 
-    abstract int attackOpponent(Character character);
+    public abstract int attackOpponent(Character character);
 
-    abstract int defend(Character character);
+    public abstract int defend(Character character);
 
-    abstract int getCharacterType();
+    public abstract int getCharacterType();
 
 }

@@ -2,24 +2,29 @@ package Game.characters;
 
 import java.util.Random;
 
+import Game.Dice;
+
 public abstract class Beast extends Character{
 
-    boolean isHeroe(){
+    public Beast(String name, int lifePoints, int shieldResistance) {
+        super(name, lifePoints, shieldResistance);
+        //TODO Auto-generated constructor stub
+    }
+
+    public boolean isHeroe(){
         return false;
     }
 
-    int throwDices(){
-        Random myRandom = new Random();
-        //desarrollar implementacion del dado
-        return 0;
+    public int throwDices(){
+        return Dice.throwDice(90);
     }
     
-    abstract boolean extraPower();
+    public abstract boolean extraPower();
 
-    abstract int attackOpponent(Character character);
+    public abstract int attackOpponent(Character character);
 
-    abstract int defend(Character character);
+    public abstract int defend(Character character);
 
-    abstract int getCharacterType();
+    public abstract int getCharacterType();
     
 }

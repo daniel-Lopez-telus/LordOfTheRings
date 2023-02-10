@@ -12,14 +12,12 @@ public class Human extends Heroe {
     }
 
     @Override
-    public boolean fears(Creature character) {
-        // TODO Auto-generated method stub
+    public boolean fears() {
         return false;
     }
 
     @Override
     public boolean hates() {
-        // TODO Auto-generated method stub
         return false;
     }
 

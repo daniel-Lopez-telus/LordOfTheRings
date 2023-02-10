@@ -8,6 +8,8 @@ public abstract class Heroe extends Creature {
         super(name, shieldResistance);
     }
 
+    
+    @Override
     public boolean isHeroe(){
         return true;  
     }
@@ -19,7 +21,7 @@ public abstract class Heroe extends Creature {
         return Math.max(firstDice, secondDice);
     }
 
-    public abstract boolean fears(Creature character);
+    public abstract boolean fears();
 
     public abstract boolean hates();
 

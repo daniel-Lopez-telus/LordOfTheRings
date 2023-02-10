@@ -10,25 +10,29 @@ public class Elf extends Heroe{
     }
 
     @Override
-    public boolean fears(Creature character) {
-        // TODO Auto-generated method stub
+    public boolean fears() {
         return false;
     }
 
     @Override
     public boolean hates() {
-        // TODO Auto-generated method stub
-        return false;
+        return true;
     }
 
+    // quizas pasar por parametro el danio calculado previamente por los dados para devolver el ataque final
+    // y que este metodo le sume +10 al dano que se le pasa por parametro y retornar el int de ataque final
     @Override
-    public int attackOpponent(Creature character) {
-        // TODO Auto-generated method stub
+    public int attackOpponent(Creature creature) {
+        // si el oponente es un orco incrementa su potencia ofensiva, que es la calculada con los dados mas
+        // 10 unidades. 
+        if(this.hates() && creature.getCharacterType() == 4) {
+            return 10;
+        }
         return 0;
     }
 
     @Override
-    public int defend(Creature character) {
+    public int defend(Creature creature) {
         // TODO Auto-generated method stub
         return 0;
     }

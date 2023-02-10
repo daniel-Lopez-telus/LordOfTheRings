@@ -8,10 +8,12 @@ public abstract class Beast extends Creature{
         super(name, shieldResistance);
     }
 
+    @Override
     public boolean isHeroe(){
         return false;
     }
 
+    @Override
     public int throwDices(){
         return Dice.throwDice(90);
     }

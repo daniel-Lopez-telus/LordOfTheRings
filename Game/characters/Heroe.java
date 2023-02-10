@@ -4,8 +4,8 @@ import Game.Dice;
 
 public abstract class Heroe extends Character {
     
-    public Heroe(String name, int lifePoints, int shieldResistance) {
-        super(name, lifePoints, shieldResistance);
+    public Heroe(String name, int shieldResistance) {
+        super(name, shieldResistance);
     }
 
     public boolean isHeroe(){

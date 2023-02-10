@@ -2,8 +2,11 @@ package Game.characters;
 
 public class Orc extends Beast{
 
-    public Orc(String name, int lifePoints, int shieldResistance) {
-        super(name, lifePoints, shieldResistance);
+    public Orc(String name, int shieldResistance) {
+        super(name, shieldResistance);
+        this.name = name;
+        lifePoints = 200;
+        this.shieldResistance = shieldResistance;
     }
 
     @Override

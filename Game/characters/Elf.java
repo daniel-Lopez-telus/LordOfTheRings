@@ -2,8 +2,11 @@ package Game.characters;
 
 public class Elf extends Heroe{
 
-    public Elf(String name, int lifePoints, int shieldResistance) {
-        super(name, lifePoints, shieldResistance);
+    public Elf(String name, int shieldResistance) {
+        super(name, shieldResistance);
+        this.name = name;
+        lifePoints = 250;
+        this.shieldResistance = shieldResistance;
     }
 
     @Override

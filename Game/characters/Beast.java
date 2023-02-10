@@ -4,9 +4,8 @@ import Game.Dice;
 
 public abstract class Beast extends Character{
 
-    public Beast(String name, int lifePoints, int shieldResistance) {
-        super(name, lifePoints, shieldResistance);
-        //TODO Auto-generated constructor stub
+    public Beast(String name, int shieldResistance) {
+        super(name, shieldResistance);
     }
 
     public boolean isHeroe(){

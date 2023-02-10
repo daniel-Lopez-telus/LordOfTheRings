@@ -19,7 +19,7 @@ public class Turn {
         combatHistory = new CombatHistory();
     } 
 
-    private void combat(Army heroeArmy, Army beastArmy) {
+    public void combat() {
      //TODO
     }
 

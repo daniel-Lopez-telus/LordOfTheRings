@@ -12,12 +12,12 @@ public class LordOfTheRings {
     private CombatHistory CombatHistory;
 
     public void execute(){
-        heroeArmy = new Army();
-        beastArmy = new Army();
-        setup();
+       turn.combat();
     }
 
-    private void setup (){
+    public void setup (){
+        heroeArmy = new Army();
+        beastArmy = new Army();
         createBeastsArmy();
         createHeroesArmy();
         turn = new Turn(heroeArmy, beastArmy);

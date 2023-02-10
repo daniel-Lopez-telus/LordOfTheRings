@@ -2,28 +2,31 @@ package Game.characters;
 
 public class Goblin extends Beast{
 
+    public Goblin(String name, int lifePoints, int shieldResistance) {
+        super(name, lifePoints, shieldResistance);
+    }
+
     @Override
-    boolean extraPower() {
+    public boolean extraPower() {
         // TODO Auto-generated method stub
         return false;
     }
 
     @Override
-    int attackOpponent(Character character) {
+    public int attackOpponent(Character character) {
         // TODO Auto-generated method stub
         return 0;
     }
 
     @Override
-    int defend(Character character) {
+    public int defend(Character character) {
         // TODO Auto-generated method stub
         return 0;
     }
 
     @Override
-    int getCharacterType() {
-        // TODO Auto-generated method stub
-        return 0;
+    public int getCharacterType() {
+        return Characters.GOBLIN.ordinal();
     }
     
 }

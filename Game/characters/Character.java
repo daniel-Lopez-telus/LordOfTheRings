@@ -20,14 +20,14 @@ public abstract class Character {
         this.shieldResistance = shieldResistance;
     }
 
-    abstract boolean isHeroe();
+    public abstract boolean isHeroe();
 
-    abstract int attackOpponent(Character Character);
+    public abstract int attackOpponent(Character Character);
 
-    abstract int defend(Character Character);
+    public abstract int defend(Character Character);
 
-    abstract int throwDices();
+    public abstract int throwDices();
 
-    abstract int getCharacterType();
+    public abstract int getCharacterType();
 
 }

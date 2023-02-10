@@ -3,7 +3,7 @@ package Game.characterFactory;
 import Game.characters.Goblin;
 import Game.characters.Orc;
 
-public class BeastsFactory implements AbstractCharacterFactory{
+public class BeastsFactory implements AbstractChgiaracterFactory{
 
     @Override
     public Character createCharacter(String type) {

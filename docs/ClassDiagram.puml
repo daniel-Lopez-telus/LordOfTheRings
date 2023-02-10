@@ -141,10 +141,7 @@ package com.lordoftherings{
     class BeastsFactory {
         +Beast createCreature()
     }
-
     }
-
-
 }
 
 LordOfTheRings *-- Turn

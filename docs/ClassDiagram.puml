@@ -129,7 +129,8 @@ package com.lordoftherings{
         +void setArmy(Creature Creature)
     }
 
-    abstract class AbstractCreatureFactory {
+    package creatureFactory {
+        interface AbstractCreatureFactory {
         Creature createCreature()
     }
 
@@ -140,6 +141,10 @@ package com.lordoftherings{
     class BeastsFactory {
         +Beast createCreature()
     }
+
+    }
+
+
 }
 
 LordOfTheRings *-- Turn

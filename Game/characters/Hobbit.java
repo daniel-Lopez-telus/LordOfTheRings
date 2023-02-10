@@ -1,6 +1,6 @@
-package Game;
+package Game.characters;
 
-public class Human extends Heroe {
+public class Hobbit extends Heroe{
 
     @Override
     boolean fears(Character character) {

@@ -1,6 +1,6 @@
-package Game;
+package Game.characters;
 
-public class Goblin extends Beast{
+public class Orc extends Beast{
 
     @Override
     boolean extraPower() {

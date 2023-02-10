@@ -1,4 +1,4 @@
-package Game;
+package Game.characters;
 
 public class Elf extends Heroe{
 

@@ -1,5 +1,7 @@
 package Game;
 
+import Game.characters.Character;
+
 public class Turn {
     
     //los ejercitos son arreglos

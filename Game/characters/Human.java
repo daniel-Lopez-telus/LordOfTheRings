@@ -1,9 +1,15 @@
-package Game;
+package Game.characters;
 
-public class Orc extends Beast{
+public class Human extends Heroe {
 
     @Override
-    boolean extraPower() {
+    boolean fears(Character character) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    boolean hates() {
         // TODO Auto-generated method stub
         return false;
     }

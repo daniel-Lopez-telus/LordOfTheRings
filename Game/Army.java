@@ -2,6 +2,8 @@ package Game;
 
 import java.util.ArrayList;
 
+import Game.characters.Character;
+
 public class Army {
     
     ArrayList<Character> army;

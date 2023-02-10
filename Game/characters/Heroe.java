@@ -1,25 +1,28 @@
-package Game;
+package Game.characters;
 
 import java.util.Random;
 
-public abstract class Beast extends Character{
-
+public abstract class Heroe {
+    
     boolean isHeroe(){
-        return false;
+        return true;  
     }
 
     int throwDices(){
         Random myRandom = new Random();
-        //desarrollar implementacion del dado
+        //implementacion del metodo 
+        //if()
         return 0;
     }
-    
-    abstract boolean extraPower();
+
+    abstract boolean fears(Character character);
+
+    abstract boolean hates();
 
     abstract int attackOpponent(Character character);
 
     abstract int defend(Character character);
 
     abstract int getCharacterType();
-    
+
 }

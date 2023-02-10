@@ -1,4 +1,4 @@
-package Game;
+package Game.characters;
 
 public abstract class Character {
     

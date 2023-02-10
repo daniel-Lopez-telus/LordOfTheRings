@@ -1,15 +1,9 @@
-package Game;
+package Game.characters;
 
-public class Hobbit extends Heroe{
-
-    @Override
-    boolean fears(Character character) {
-        // TODO Auto-generated method stub
-        return false;
-    }
+public class Goblin extends Beast{
 
     @Override
-    boolean hates() {
+    boolean extraPower() {
         // TODO Auto-generated method stub
         return false;
     }

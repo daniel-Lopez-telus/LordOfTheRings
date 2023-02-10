@@ -6,10 +6,10 @@ import Game.characters.Orc;
 public class BeastsFactory implements AbstractChgiaracterFactory{
 
     @Override
-    public Character createCharacter(String type) {
+    public Character createCharacter(String type,String name,int shieldResistance) {
         Character myCharacter = switch (type) {
-            case "Orc" -> new Orc();
-            case "Goblin" -> new Goblin();
+            case "Orc" -> new Orc(name,shieldResistance);
+            case "Goblin" -> new Goblin(name,shieldResistance);
             default -> null;
         };
         return myCharacter;

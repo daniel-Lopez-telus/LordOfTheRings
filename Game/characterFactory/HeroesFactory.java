@@ -7,11 +7,11 @@ import Game.characters.Human;
 public class HeroesFactory implements AbstractCharacterFactory {
 
     @Override
-    public Character createCharacter(String type) {
+    public Character createCharacter(String type,String name,int shieldResistance) {
         Character myCharacter = switch (type) {
-            case "Human" -> new Human();
-            case "Elf" -> new Elf();
-            case "Hobbit" -> new Hobbit();
+            case "Human" -> new Human(name,shieldResistance);
+            case "Elf" -> new Elf(name,shieldResistance);
+            case "Hobbit" -> new Hobbit(name.shieldResistance);
             default -> null;
         };
         return myCharacter;

@@ -129,9 +129,16 @@ package com.lordoftherings{
         +void setArmy(Character character)
     }
 
-    abstract class AbstractArmyFactory {
-        Character createHeroe()
-        Character createBeast()
+    abstract class AbstractCharacterFactory {
+        Character createCharacter()
+    }
+
+    class HeroesFactory {
+        +Heroe createCharacter()
+    }
+
+    class BeastsFactory {
+        +Beast createCharacter()
     }
 }
 
@@ -152,7 +159,8 @@ Beast <|-- Goblin
 
 CombatHistory <-- Turn
 
-Army ..> AbstractArmyFactory
-
+LordOfTheRings ..> AbstractCharacterFactory
+AbstractCharacterFactory <|-- HeroesFactory
+AbstractCharacterFactory <|-- BeastsFactory
 
 @enduml

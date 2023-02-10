@@ -9,6 +9,7 @@ public abstract class Character {
         ORC,
         GOBLIN
     };
+    
     private String name;
     private int lifePoints;
     private int shieldResistance;

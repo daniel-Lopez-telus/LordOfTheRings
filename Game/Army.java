@@ -9,12 +9,14 @@ public class Army {
     ArrayList<Character> army;
 
     public Army(){
-        setArmy();
+        this.army = new ArrayList<>();
     }
 
-    private void setArmy(Character character){
-        
+    public void insertIntoArmy(Character character){
+        army.add(character);
     }
 
-    public ArrayList<Character> getArmy(){}
+    public ArrayList<Character> getArmy() {
+        return army;
+    }
 }

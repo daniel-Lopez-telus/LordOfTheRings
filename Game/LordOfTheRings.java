@@ -1,5 +1,9 @@
 package Game;
 
+import Game.characterFactory.AbstractCharacterFactory;
+import Game.characterFactory.BeastsFactory;
+import Game.characterFactory.HeroesFactory;
+
 public class LordOfTheRings {
     
     private Army heroeArmy;
@@ -8,22 +12,29 @@ public class LordOfTheRings {
     private CombatHistory CombatHistory;
 
     public void execute(){
-        //TODO
+        heroeArmy = new Army();
+        beastArmy = new Army();
+        setup();
     }
 
-    public void setup (){
+    private void setup (){
         createBeastsArmy();
         createHeroesArmy();
         turn = new Turn(heroeArmy, beastArmy);
     }
 
     private void createBeastsArmy(){
-        //TODO
+        AbstractCharacterFactory myFactory = new BeastsFactory();
+        beastArmy.insertIntoArmy(myFactory.createCharacter(""));
+        //quizas aca se tire un mensaje en consola
+        //pidiendo cual personaje seleccionar
+        
     }
 
     private void createHeroesArmy(){
-        //TODO
+        AbstractCharacterFactory myFactory = new HeroesFactory();
+        //quizas aca se tire un mensaje en consola
+        //pidiendo cual personaje seleccionar
+        heroeArmy.insertIntoArmy(myFactory.createCharacter(""));
     }
-
-
 }

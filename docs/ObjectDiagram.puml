@@ -1,8 +1,8 @@
-@startuml
+@startuml ObjectDiagram
 
 object LordOfTheRings
 
-object characters
+object creatures
 object heroes
 object beasts
 object army
@@ -14,7 +14,7 @@ object hobbit
 object orc
 object goblin
 object human
-object characterGoals
+object creatureGoals
 object attackOpponent
 object defend
 object fury
@@ -40,10 +40,10 @@ LordOfTheRings *-- army
 LordOfTheRings o-- gameGoals
 LordOfTheRings *-- combatHistory
 
-army *-- characters
+army *-- creatures
 turns --> army
-characters <|-- heroes
-characters <|-- beasts
+creatures <|-- heroes
+creatures <|-- beasts
 
 gameGoals <|-- createHeroesArmy
 gameGoals <|-- createBeastsArmy
@@ -52,9 +52,9 @@ turns o-- turnGoals
 turnGoals <|-- combat
 turnGoals <|-- calculateDamageDealt
 
-characters *-- name
-characters *-- lifePoints
-characters *-- shieldResistance
+creatures *-- name
+creatures *-- lifePoints
+creatures *-- shieldResistance
 
 turns --> combatHistory
 
@@ -64,10 +64,10 @@ beasts <|-- orc
 beasts <|-- goblin
 heroes <|-- human
 
-characters o-- characterGoals
-characterGoals <|-- attackOpponent 
-characterGoals <|-- defend
-characterGoals<|-- throwDices
+creatures o-- creatureGoals
+creatureGoals <|-- attackOpponent 
+creatureGoals <|-- defend
+creatureGoals<|-- throwDices
 
 heroes <|-- heroesGoals
 heroesGoals <|-- fears

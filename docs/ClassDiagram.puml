@@ -1,4 +1,4 @@
-@startuml LordOfTheRings
+@startuml ClassDiagram
 
 package com.lordoftherings{
     class LordOfTheRings{
@@ -24,20 +24,20 @@ package com.lordoftherings{
         +Turn(Army heroeArmy, Army beastArmy, CombatHistory combatHistory)
         +void combat()
         +int calculateDamageDealt()
-        +void showTurnResults(int currentTurn, Character heroe, Character beast)
+        +void showTurnResults(int currentTurn, Creature heroe, Creature beast)
     }
 
     class CombatHistory{
         -int turnNumber
-        -Character winner
-        -Character loser
+        -Creature winner
+        -Creature loser
         -int damage
 
-        +CombatHistory(int turnNumber, Character winner, Character loser, int damage)
+        +CombatHistory(int turnNumber, Creature winner, Creature loser, int damage)
     }
 
-    package characters{
-        enum characterType{
+    package Creatures{
+        enum CreatureType{
             HUMAN
             ELF
             HOBBIT
@@ -45,53 +45,53 @@ package com.lordoftherings{
             GOBLIN
         }
 
-        abstract class Character{
-            #enum characterType
+        abstract class Creature{
+            #enum CreatureType
             -String name
             -int lifePoints
             -int shieldResistance
 
-            +Character(String name, int lifePoints, int shieldResistance)
+            +Creature(String name, int lifePoints, int shieldResistance)
             +abstract boolean isHeroe()
-            +abstract int attackOpponent(Character character)
-            +abstract int defend(Character character)
+            +abstract int attackOpponent(Creature Creature)
+            +abstract int defend(Creature Creature)
             +abstract int throwDices()
-            +abstract int getCharacterType()
+            +abstract int getCreatureType()
         }
 
         package heroes{
             abstract class Heroe{
                 +boolean isHeroe()
                 +int throwDices()
-                +abstract boolean fears(Character character)
-                +abstract boolean hates(Character character)
-                +abstract int attackOpponent(Character character)
-                +abstract int defend(Character character)
-                +abstract int getCharacterType()
+                +abstract boolean fears(Creature Creature)
+                +abstract boolean hates(Creature Creature)
+                +abstract int attackOpponent(Creature Creature)
+                +abstract int defend(Creature Creature)
+                +abstract int getCreatureType()
             }
 
             class Human{            
-                +int getCharacterType()
-                +int attackOpponent(Character character)
-                +int defend(Character character)
-                +boolean fears(Character character)
-                +boolean hates(Character character)
+                +int getCreatureType()
+                +int attackOpponent(Creature Creature)
+                +int defend(Creature Creature)
+                +boolean fears(Creature Creature)
+                +boolean hates(Creature Creature)
             }
 
             class Elf{
-                +int getCharacterType()
-                +int attackOpponent(Character character)
-                +int defend(Character character)
-                +boolean fears(Character character)
-                +boolean hates(Character character)
+                +int getCreatureType()
+                +int attackOpponent(Creature Creature)
+                +int defend(Creature Creature)
+                +boolean fears(Creature Creature)
+                +boolean hates(Creature Creature)
             }
 
             class Hobbit{
-                +int getCharacterType()
-                +int attackOpponent(Character character)
-                +int defend(Character character)
-                +boolean fears(Character character)
-                +boolean hates(Character character)
+                +int getCreatureType()
+                +int attackOpponent(Creature Creature)
+                +int defend(Creature Creature)
+                +boolean fears(Creature Creature)
+                +boolean hates(Creature Creature)
             }
         }
 
@@ -100,55 +100,55 @@ package com.lordoftherings{
                 +boolean isHeroe()
                 +int throwDices()
                 +abstract boolean extraPower()
-                +abstract int attackOpponent(Character character)
-                +abstract int defend(Character character)
-                +abstract int getCharacterType()
+                +abstract int attackOpponent(Creature Creature)
+                +abstract int defend(Creature Creature)
+                +abstract int getCreatureType()
             }
 
             class Orc{
                 +boolean extraPower()
-                +int attackOpponent(Character character)
-                +int defend(Character character)
-                +int getCharacterType()
+                +int attackOpponent(Creature Creature)
+                +int defend(Creature Creature)
+                +int getCreatureType()
             }
 
             class Goblin{
                 +boolean extraPower()
-                +int attackOpponent(Character character)
-                +int defend(Character character)
-                +int getCharacterType()
+                +int attackOpponent(Creature Creature)
+                +int defend(Creature Creature)
+                +int getCreatureType()
             }
         }
     }
 
     class Army{
-        -ArrayList<Character> army
+        -ArrayList<Creature> army
 
         +Army()
-        +ArrayList<Character> getArmy()
-        +void setArmy(Character character)
+        +ArrayList<Creature> getArmy()
+        +void setArmy(Creature Creature)
     }
 
-    abstract class AbstractCharacterFactory {
-        Character createCharacter()
+    abstract class AbstractCreatureFactory {
+        Creature createCreature()
     }
 
     class HeroesFactory {
-        +Heroe createCharacter()
+        +Heroe createCreature()
     }
 
     class BeastsFactory {
-        +Beast createCharacter()
+        +Beast createCreature()
     }
 }
 
 LordOfTheRings *-- Turn
 LordOfTheRings *-- Army
 
-Army *-- Character
+Army *-- Creature
 
-Character <|-- Heroe
-Character <|-- Beast
+Creature <|-- Heroe
+Creature <|-- Beast
 
 Heroe <|-- Human
 Heroe <|-- Elf
@@ -159,8 +159,8 @@ Beast <|-- Goblin
 
 CombatHistory <-- Turn
 
-LordOfTheRings ..> AbstractCharacterFactory
-AbstractCharacterFactory <|-- HeroesFactory
-AbstractCharacterFactory <|-- BeastsFactory
+LordOfTheRings ..> AbstractCreatureFactory
+AbstractCreatureFactory <|-- HeroesFactory
+AbstractCreatureFactory <|-- BeastsFactory
 
 @enduml

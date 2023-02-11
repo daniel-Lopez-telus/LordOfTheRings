@@ -26,64 +26,54 @@ public class Turn {
         int beastNumberAttack = 0; 
         int damage = 0;
     
-        // aqui determinar cuantos turnos seran ejecutados, sugerencia se ejecutaran los turnos hasta que todos los lifePoints
-        // de las criaturas esten a cero en cualquier arreglo, esa seria la condicion entonces mejor usar un while 
-        for(int i = 0; i < heroeArmy.getArmySize(); i++) {
-
-            for(Creature heroe: heroeArmy.getArmy()) {
-                if(heroe.getLifePoints() <= 0){
+        // Determinar cuantos turnos seran ejecutados:
+        // cuando y hasta que los lifePoints de todo un army esten a cero entonces la condicion del while sera falsa
+        // la condicion del while seria una condicion compuesta de dos subcondiciones de heroeArmy y beastArmy
+        while () {
+            for (Creature heroe : heroeArmy.getArmy()) {
+                if (heroe.getLifePoints() <= 0) {
                     continue;
-            }
-            heroeNumberAttack = heroe.throwDices();
+                }
+                heroeNumberAttack = heroe.throwDices();
 
-            for(Creature beast: beastArmy.getArmy()) {
-                if(beast.getLifePoints() <= 0){
-                    continue;
-            }
-            beastNumberAttack = beast.throwDices();
+                for (Creature beast : beastArmy.getArmy()) {
+                    if (beast.getLifePoints() <= 0) {
+                        continue;
+                    }
+                    beastNumberAttack = beast.throwDices();
 
-            //me devuelve una potenciaReal de ataque o numero total de ataque en funcion de la bestia que se ataque
-            heroeNumberAttack += heroe.attackOpponent(beast);
-            //calcular danio infligido en funcion del nivel de armadura del defensor
-            //solo habra danio si la potencia ofensiva o heroeNumberAttack es superior al nivel de
-            // armadura del defensor. Si es asi el danio producido sera la diferencia entre la potencia
-            // de ataque y el nivel de armadur adel opononete.
-            // if(heroeNumberAttack > shieldResistance)
-            // dano = heroeNumberAttack - shieldResistance
-            // entonces este danio es lo que le resto a lifePoints del determinado creature
-            if(heroeNumberAttack > beast.getShieldResistance()) {
-                  damage = heroeNumberAttack - beast.getShieldResistance();
-                  beast.setNewLifePoints(damage);
-            }
-            
-            //ahora la bestia ataca, pero si es orco, el nivel de armadura de su oponente se reduce en un 10% (se reduce solo para este turno de ataque)
-            if(beast.getCharacterType() == Creatures.ORC.ordinal() { //el enum esta protected)
-                //mejor extraigo en currentSHieldresisteance si es un orco el que va atacar, entonces lo guardo, y luego seteo uno temporal para evaluar condicion y luego le vuelvo 
-                // a poner de nuevo el currentSHieldresisteance al heroe de turno
-                int currentHeroeShieldResistance = heroe.getShieldResistance();
-                int weakerShieldResistance = beast.attackOpponent(heroe);
-                // hacer un heroe.setTemporaryShieldResistance(weakerShieldResistance);
-                // hay que crear el meotdoSHieldResistance en clase abstracta heroe unicamente
-                if(beastNumberAttack > heroe.getShieldResistance()) {
-                    damage = beastNumberAttack - heroe.getShieldResistance();
-                    heroe.setNewLifePoints(damage);
-              }
-            } 
-            beastNumberAttack += beast.attackOpponent(heroe);
-            if(beastNumberAttack > heroe.getShieldResistance()) {
-                damage = heroeNumberAttack - beast.getShieldResistance();
-                beast.setNewLifePoints(damage);
-            }
-            }
+                    heroeNumberAttack += heroe.attackOpponent(beast);
+                    if (heroeNumberAttack > beast.getShieldResistance()) {
+                        damage = heroeNumberAttack - beast.getShieldResistance();
+                        beast.setNewLifePoints(damage);
+                    }
+
+                    // bestia ataca pero, si es orco, el nivel de armadura de su oponente se reduce en un 10% (se reduce solo para este turno de ataque)
+                    if (beast.getCharacterType() == Creatures.ORC.ordinal()) { //el enum esta protected, mejor igualar a un numero)
+                        int weakerShieldResistance = beast.attackOpponent(heroe);
+                        if (beastNumberAttack > weakerShieldResistance) {
+                            damage = beastNumberAttack - weakerShieldResistance;
+                            heroe.setNewLifePoints(damage);
+                        }
+                    } else {
+                        beastNumberAttack += beast.attackOpponent(heroe);
+                        if (beastNumberAttack > heroe.getShieldResistance()) {
+                            damage = beastNumberAttack - heroe.getShieldResistance();
+                            heroe.setNewLifePoints(damage);
+                        }
+                    }
+                }
             }
         }
     }
 
+    // este metodo todavia queda sin usar
     private int calculateDamageDealt(){
         //TODO
         return 0;
     }
 
+    //definir que va hacer nuestro combatHistory y hacer un display por cada turno como en el ejemplo
     private void showTurnResults(int currenTurn, Creature heroe, Creature beast){
         //TODO
     }

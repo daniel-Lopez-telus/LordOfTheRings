@@ -34,9 +34,6 @@ public class Elf extends Heroe{
         this.lifePoints -= damage;
     }
 
-
-    // quizas pasar por parametro el danio calculado previamente por los dados para devolver el ataque final
-    // y que este metodo le sume +10 al dano que se le pasa por parametro y retornar el int de ataque final
     @Override
     public int attackOpponent(Creature creature) {
         // si el oponente es un orco incrementa su potencia ofensiva, que es la calculada con los dados mas
@@ -49,7 +46,6 @@ public class Elf extends Heroe{
 
     @Override
     public int defend(Creature creature) {
-        // TODO Auto-generated method stub
         return 0;
     }
 

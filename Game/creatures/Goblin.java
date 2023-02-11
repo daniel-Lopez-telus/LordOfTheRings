@@ -9,6 +9,7 @@ public class Goblin extends Beast{
         this.shieldResistance = shieldResistance;
     }
 
+    // El extraPower creo que ya no sera necesario
     @Override
     public boolean extraPower() {
         // TODO Auto-generated method stub

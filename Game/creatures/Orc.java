@@ -9,6 +9,7 @@ public class Orc extends Beast{
         this.shieldResistance = shieldResistance;
     }
 
+    //El extraPower creo que ya no sera utilizado 
     @Override
     public boolean extraPower() {
         // TODO Auto-generated method stub
@@ -32,10 +33,10 @@ public class Orc extends Beast{
     }
 
     @Override
-    public int attackOpponent(Creature character) {
+    public int attackOpponent(Creature heroe) {
         // si el orco ataca, el nivel de armadura de su oponente se reduce en un 10% (se reduce solo para este turno de ataque)
-        int setTemporaryShieldResistance = character.getShieldResistance() - (int)(character.getShieldResistance()*0.10);
-        return setTemporaryShieldResistance;
+        int temporaryShieldResistance = heroe.getShieldResistance() - (int)(heroe.getShieldResistance()*0.10);
+        return temporaryShieldResistance;
     }
 
     @Override

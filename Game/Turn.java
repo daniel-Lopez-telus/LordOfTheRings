@@ -1,10 +1,18 @@
 package Game;
 
 import java.util.ArrayList;
-
 import Game.creatures.Creature;
 
 public class Turn {
+
+    /**
+     * NOTAS:
+     * 1. QUE VA A SUCEDER SI TENEMOS UN CREATURE MUERTO EN CUALQUIER ARMY? ENTONCES EL CREATURE DEL OTRO LADO YA NO PELEA?
+     * 2. DEFINIR LA CLASE COMBATHISTORY... PUEDE SER LA QUE VAYA IMPRIMIENDO LOS MENSAJES EN CONSOLA EN CADA TURNO PERO ES 
+     * SOLAMENTE UNA IDEA!!
+     * 3. EL METODO DEFEND DE LA CLASE CREATURE ES PROBABLE QUE YA NO SEA MAS UTIL, NUNCA LA USE. ESTUDIAR METODO COMBAT :)
+     * 4. ECHAR OJO A LA CONDICION beast.getCharacterType() == Creatures.ORC.ordinal() DE LA LINEA 61.
+     */
     
     //los ejercitos son clases que contienen arreglos de heroes y bestias
     private Army heroeArmy;
@@ -67,13 +75,13 @@ public class Turn {
         }
     }
 
-    // este metodo todavia queda sin usar
+    // este metodo me quedo sin usar
     private int calculateDamageDealt(){
         //TODO
         return 0;
     }
 
-    //definir que va hacer nuestro combatHistory y hacer un display por cada turno como en el ejemplo
+    //definir que va hacer nuestro combatHistory y hacer un display por cada turno como en el ejemplo... solo son ideas de mi cabeza. metodo por definir
     private void showTurnResults(int currenTurn, Creature heroe, Creature beast){
         //TODO
     }

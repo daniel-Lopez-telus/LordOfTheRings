@@ -16,14 +16,30 @@ public class Orc extends Beast{
     }
 
     @Override
+    public int getLifePoints() {
+        return this.lifePoints;
+    }
+
+
+    @Override
+    public int getShieldResistance() {
+        return this.shieldResistance;
+    }
+
+    @Override
+    public void setNewLifePoints(int damage) {
+        this.lifePoints -= damage;
+    }
+
+    @Override
     public int attackOpponent(Creature character) {
-        // TODO Auto-generated method stub
-        return 0;
+        // si el orco ataca, el nivel de armadura de su oponente se reduce en un 10% (se reduce solo para este turno de ataque)
+        int setTemporaryShieldResistance = character.getShieldResistance() - (int)(character.getShieldResistance()*0.10);
+        return setTemporaryShieldResistance;
     }
 
     @Override
     public int defend(Creature character) {
-        // TODO Auto-generated method stub
         return 0;
     }
 

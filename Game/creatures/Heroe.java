@@ -25,10 +25,4 @@ public abstract class Heroe extends Creature {
 
     public abstract boolean hates();
 
-    public abstract int attackOpponent(Creature character);
-
-    public abstract int defend(Creature character);
-
-    public abstract int getCharacterType();
-
 }

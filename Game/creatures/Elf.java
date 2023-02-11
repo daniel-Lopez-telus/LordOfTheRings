@@ -19,6 +19,22 @@ public class Elf extends Heroe{
         return true;
     }
 
+    @Override
+    public int getLifePoints(){
+        return this.lifePoints;
+    }
+
+    @Override
+    public int getShieldResistance() {
+        return this.shieldResistance;
+    }
+
+    @Override
+    public void setNewLifePoints(int damage) {
+        this.lifePoints -= damage;
+    }
+
+
     // quizas pasar por parametro el danio calculado previamente por los dados para devolver el ataque final
     // y que este metodo le sume +10 al dano que se le pasa por parametro y retornar el int de ataque final
     @Override

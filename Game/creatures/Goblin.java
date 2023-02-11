@@ -16,8 +16,22 @@ public class Goblin extends Beast{
     }
 
     @Override
+    public int getLifePoints(){
+        return this.lifePoints;
+    }
+
+    @Override
+    public int getShieldResistance() {
+        return this.shieldResistance;
+    }
+
+    @Override
+    public void setNewLifePoints(int damage) {
+        this.lifePoints -= damage;
+    }
+
+    @Override
     public int attackOpponent(Creature character) {
-        // TODO Auto-generated method stub
         return 0;
     }
 
@@ -31,5 +45,7 @@ public class Goblin extends Beast{
     public int getCharacterType() {
         return Creatures.GOBLIN.ordinal();
     }
+
+    
     
 }

@@ -21,4 +21,8 @@ public class Army {
     public ArrayList<Creature> getArmy() {
         return army;
     }
+
+    public int getArmySize() {
+        return this.army.size();
+    }
 }

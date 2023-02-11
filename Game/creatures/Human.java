@@ -22,14 +22,27 @@ public class Human extends Heroe {
     }
 
     @Override
+    public int getLifePoints() {
+        return this.lifePoints;
+    }
+
+    @Override
+    public int getShieldResistance() {
+        return this.shieldResistance;
+    }
+
+    @Override
+    public void setNewLifePoints(int damage) {
+        this.lifePoints -= damage;
+    }
+
+    @Override
     public int attackOpponent(Creature character) {
-        // TODO Auto-generated method stub
         return 0;
     }
 
     @Override
     public int defend(Creature character) {
-        // TODO Auto-generated method stub
         return 0;
     }
 

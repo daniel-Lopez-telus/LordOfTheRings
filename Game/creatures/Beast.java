@@ -20,10 +20,4 @@ public abstract class Beast extends Creature{
     
     public abstract boolean extraPower();
 
-    public abstract int attackOpponent(Creature character);
-
-    public abstract int defend(Creature character);
-
-    public abstract int getCharacterType();
-    
 }

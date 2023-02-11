@@ -6,71 +6,79 @@ import Game.creatureFactory.HeroesFactory;
 import Game.utils.Console;
 
 public class LordOfTheRings {
-    
+
     private Army heroeArmy;
     private Army beastArmy;
     private Turn turn;
     private CombatHistory combatHistory;
     private int size = 0;
 
-    public void execute(){
-       turn.combat();
+    public void execute() {
+        turn.combat();
     }
 
-    public void setup (){
-       do{
-        System.out.print("Enter army size: ");
-        size = Console.getInt();
-        System.out.println("SIZE " + size);
-       }while(size >= 10);
+    public void setup() {
+        do {
+            System.out.print("Enter army size: ");
+            size = Console.getInt();
+        } while (size >= 10);
         heroeArmy = new Army(size);
         beastArmy = new Army(size);
-        //createBeastsArmy();
         createHeroesArmy();
+        createBeastsArmy();
         turn = new Turn(heroeArmy, beastArmy);
     }
 
-    private void createBeastsArmy(){
+    private void createBeastsArmy() {
         AbstractCreaturerFactory myFactory = new BeastsFactory();
-        //beastArmy.insertIntoArmy(myFactory.createCreature("", null, 0));
-        //quizas aca se tire un mensaje en consola
-        //pidiendo cual personaje seleccionar
-        
+        int i = 1;
+        do {
+            int  shieldResistance = 0, type = 0;
+            String name = "";
+            System.out.println("=====ADD BEAST #" + i + "=====");
+            System.out.println("Select a beast type");
+            System.out.println("4) Orc");
+            System.out.println("5) Goblin");
+            while (type < 4 || type > 5) {
+                System.out.print("\tYour option: ");
+                type = Console.getInt();
+            }
+            fillCreatureInfo(name,shieldResistance);       
+            beastArmy.insertIntoArmy(myFactory.createCreature(type, name, shieldResistance));
+            i++;
+        } while (i <= size);
     }
 
-    private void createHeroesArmy(){
+    private void createHeroesArmy() {
         AbstractCreaturerFactory myFactory = new HeroesFactory();
-        //heroeArmy.insertIntoArmy(myFactory.createCreature("", null, 0));
-        int i = 1, shieldResistance = 0, type = 0;
-        String name = null;
-        boolean error = false;
-        do{
-            System.out.println("=====ADD HEROE=====");
+        int i = 1;
+        do {
+            int  shieldResistance = 0, type = 0;
+            String name = "";
+            System.out.println("=====ADD HEROE #" + i + "=====");
             System.out.println("Select a heroe type");
             System.out.println("1) Human");
             System.out.println("2) Elf");
             System.out.println("3) Hobbit");
-            System.out.print("\tYour option: ");
-            type = Console.getInt();
-            System.out.print("Heroe name: ");
-            name = Console.getString();            
-            if(name == ""){
-                System.out.println("Please enter a valid name");
-                name = Console.getString();
-                error = true;
+            while (type <= 0 || type > 3) {
+                System.out.print("\tYour option: ");
+                type = Console.getInt();
             }
-            error = false;
-            System.out.print("Heroe shield resistance: ");
-            shieldResistance = Console.getInt();
-            if(shieldResistance < 50){
-                System.out.println("The minimum is 50");
-                shieldResistance = Console.getInt();
-                error = true;
-            }
-            error = false;
+            fillCreatureInfo(name,shieldResistance);       
             heroeArmy.insertIntoArmy(myFactory.createCreature(type, name, shieldResistance));
+            type = 0;
+            name = "";
+            shieldResistance = 0;
             i++;
-        }while(i <= size || error)
-        ;
+        } while (i <= size);
+    }
+
+    private void fillCreatureInfo(String name, int shieldResistance) {
+        System.out.print("Heroe name: ");
+        name = Console.getString();
+        while (shieldResistance < 50) {
+            System.out.print("Heroe shield resistance (Min = 50): ");
+            shieldResistance = Console.getInt();
+        }
     }
 }

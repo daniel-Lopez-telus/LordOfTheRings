@@ -8,6 +8,12 @@ public class Turn {
     /**
      * NOTAS:
      * 1. QUE VA A SUCEDER SI TENEMOS UN CREATURE MUERTO EN CUALQUIER ARMY? ENTONCES EL CREATURE DEL OTRO LADO YA NO PELEA?
+     * posibles respuestas: 
+     * 1.1 en cada turno un personaje de un ejercito atacara a un unico adversario del ejercito oponente. 
+     * se enfrentaran siempre los personajes situados en la misma posicion de cada ejercito. Si alguno de los ejercitois
+     * dispone de mas efectivos que el contrario los personajes sobrantes no participaran en ese turno de batalla. 
+     * 
+     * 
      * 2. DEFINIR LA CLASE COMBATHISTORY... PUEDE SER LA QUE VAYA IMPRIMIENDO LOS MENSAJES EN CONSOLA EN CADA TURNO PERO ES 
      * SOLAMENTE UNA IDEA!!
      * 3. EL METODO DEFEND DE LA CLASE CREATURE ES PROBABLE QUE YA NO SEA MAS UTIL, NUNCA LA USE. ESTUDIAR METODO COMBAT :)
@@ -33,6 +39,9 @@ public class Turn {
         int heroeNumberAttack = 0;
         int beastNumberAttack = 0; 
         int damage = 0;
+
+        Creature heroeToBattle;
+        Creature beastToBattle;
     
         // Determinar cuantos turnos seran ejecutados:
         // cuando y hasta que los lifePoints de todo un army esten a cero entonces la condicion del while sera falsa
@@ -42,34 +51,51 @@ public class Turn {
                 if (heroe.getLifePoints() <= 0) {
                     continue;
                 }
-                heroeNumberAttack = heroe.throwDices();
+                heroeToBattle = heroe;
+                break;
+            }
 
-                for (Creature beast : beastArmy.getArmy()) {
-                    if (beast.getLifePoints() <= 0) {
-                        continue;
-                    }
-                    beastNumberAttack = beast.throwDices();
+            for (Creature beast : beastArmy.getArmy()) {
+                if (beast.getLifePoints() <= 0) {
+                continue;
+                }
+                beastToBattle = beast;
+                break;
+            }
 
-                    heroeNumberAttack += heroe.attackOpponent(beast);
-                    if (heroeNumberAttack > beast.getShieldResistance()) {
-                        damage = heroeNumberAttack - beast.getShieldResistance();
-                        beast.setNewLifePoints(damage);
-                    }
+            heroeVsBeast(heroeToBattle, beastToBattle);
+            //hacer una funcion que verifique los lifePoints de todas las criaturas de cada army 
+        }
+    }
 
-                    // bestia ataca pero, si es orco, el nivel de armadura de su oponente se reduce en un 10% (se reduce solo para este turno de ataque)
-                    if (beast.getCharacterType() == Creatures.ORC.ordinal()) { //el enum esta protected, mejor igualar a un numero)
-                        int weakerShieldResistance = beast.attackOpponent(heroe);
-                        if (beastNumberAttack > weakerShieldResistance) {
-                            damage = beastNumberAttack - weakerShieldResistance;
-                            heroe.setNewLifePoints(damage);
-                        }
-                    } else {
-                        beastNumberAttack += beast.attackOpponent(heroe);
-                        if (beastNumberAttack > heroe.getShieldResistance()) {
-                            damage = beastNumberAttack - heroe.getShieldResistance();
-                            heroe.setNewLifePoints(damage);
-                        }
-                    }
+    private void heroeVsBeast(Creature heroe, Creature beast) {
+        int heroeNumberAttack = 0;
+        int beastNumberAttack = 0;
+        int damage = 0;
+
+        heroeNumberAttack = heroe.throwDices();
+        beastNumberAttack = beast.throwDices();
+
+        //heroe ataca primero a bestia
+        heroeNumberAttack += heroe.attackOpponent(beast);
+        if (heroeNumberAttack > beast.getShieldResistance()) {
+            damage = heroeNumberAttack - beast.getShieldResistance();
+            beast.setNewLifePoints(damage);
+        }
+
+        //si la bestia que ha sido atacada ya se queda sin puntos no tiene sentido que esta ataque porque ya esta muerta
+        if (!(beast.getLifePoints() <= 0)) {
+            if (beast.getCharacterType() == Creatures.ORC.ordinal()) { //el enum esta protected, mejor igualar a un numero)
+                int weakerShieldResistance = beast.attackOpponent(heroe);
+                if (beastNumberAttack > weakerShieldResistance) {
+                    damage = beastNumberAttack - weakerShieldResistance;
+                    heroe.setNewLifePoints(damage);
+                }
+            } else {
+                beastNumberAttack += beast.attackOpponent(heroe);
+                if (beastNumberAttack > heroe.getShieldResistance()) {
+                    damage = beastNumberAttack - heroe.getShieldResistance();
+                    heroe.setNewLifePoints(damage);
                 }
             }
         }

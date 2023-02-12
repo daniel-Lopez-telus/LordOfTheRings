@@ -1,5 +1,7 @@
 package Game.creatures;
 
+import Game.utils.Creatures;
+
 public class Human extends Heroe {
 
 
@@ -48,7 +50,7 @@ public class Human extends Heroe {
 
     @Override
     public int getCharacterType() {
-        return Creatures.HUMAN.ordinal();
+        return Creatures.Types.HUMAN.ordinal();
     }
     
 }

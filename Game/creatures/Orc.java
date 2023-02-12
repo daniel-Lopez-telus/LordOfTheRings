@@ -1,5 +1,7 @@
 package Game.creatures;
 
+import Game.utils.Creatures;
+
 public class Orc extends Beast{
 
     public Orc(String name, int shieldResistance) {
@@ -46,7 +48,7 @@ public class Orc extends Beast{
 
     @Override
     public int getCharacterType() {
-        return Creatures.ORC.ordinal();
+        return Creatures.Types.ORC.ordinal();
     }
     
 }

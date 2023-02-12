@@ -1,5 +1,7 @@
 package Game.creatures;
 
+import Game.utils.Creatures;
+
 public class Elf extends Heroe{
 
     public Elf(String name, int shieldResistance) {
@@ -51,7 +53,7 @@ public class Elf extends Heroe{
 
     @Override
     public int getCharacterType() {
-        return Creatures.ELF.ordinal();
+        return Creatures.Types.ELF.ordinal();
     }
     
 }

@@ -2,6 +2,7 @@ package Game;
 
 import java.util.ArrayList;
 import Game.creatures.Creature;
+import Game.utils.Creatures;
 
 public class Turn {
 
@@ -11,7 +12,7 @@ public class Turn {
      * 2. DEFINIR LA CLASE COMBATHISTORY... PUEDE SER LA QUE VAYA IMPRIMIENDO LOS MENSAJES EN CONSOLA EN CADA TURNO PERO ES 
      * SOLAMENTE UNA IDEA!!
      * 3. EL METODO DEFEND DE LA CLASE CREATURE ES PROBABLE QUE YA NO SEA MAS UTIL, NUNCA LA USE. ESTUDIAR METODO COMBAT :)
-     * 4. ECHAR OJO A LA CONDICION beast.getCharacterType() == Creatures.ORC.ordinal() DE LA LINEA 61.
+     * 4. ECHAR OJO A LA CONDICION beast.getCharacterType() == CCreatures.Types.ORC.ordinal() DE LA LINEA 61.
      */
     
     //los ejercitos son clases que contienen arreglos de heroes y bestias
@@ -57,7 +58,7 @@ public class Turn {
                     }
 
                     // bestia ataca pero, si es orco, el nivel de armadura de su oponente se reduce en un 10% (se reduce solo para este turno de ataque)
-                    if (beast.getCharacterType() == Creatures.ORC.ordinal()) { //el enum esta protected, mejor igualar a un numero)
+                    if (beast.getCharacterType() == Creatures.Types.ORC.ordinal()) { //el enum esta protected, mejor igualar a un numero)
                         int weakerShieldResistance = beast.attackOpponent(heroe);
                         if (beastNumberAttack > weakerShieldResistance) {
                             damage = beastNumberAttack - weakerShieldResistance;
@@ -76,7 +77,7 @@ public class Turn {
     }
 
     private boolean verifyArmyExistance(Army army){
-        int counter = army.getArmy().stream()
+        long counter = army.getArmy().stream()
             .filter(creature -> creature.getLifePoints() > 0)
             .count();
 

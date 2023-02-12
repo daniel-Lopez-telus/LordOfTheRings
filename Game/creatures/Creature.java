@@ -1,15 +1,6 @@
 package Game.creatures;
 
 public abstract class Creature {
-    
-    public enum Creatures{
-        HUMAN,
-        ELF,
-        HOBBIT,
-        ORC,
-        GOBLIN
-    };
-    
     protected String name;
     protected int lifePoints;
     protected int shieldResistance;

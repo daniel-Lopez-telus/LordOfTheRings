@@ -11,7 +11,8 @@ public class LordOfTheRings {
     private Army beastArmy;
     private Turn turn;
     private CombatHistory combatHistory;
-    private int size = 0;
+    private int size = 0,type = 0, shieldResistance = 0;
+    String name = "";
 
     public void execute() {
         turn.combat();
@@ -33,8 +34,9 @@ public class LordOfTheRings {
         AbstractCreaturerFactory myFactory = new BeastsFactory();
         int i = 1;
         do {
-            int  shieldResistance = 0, type = 0;
-            String name = "";
+            shieldResistance = 0;
+            type = 0;
+            name = "";
             System.out.println("=====ADD BEAST #" + i + "=====");
             System.out.println("Select a beast type");
             System.out.println("4) Orc");
@@ -43,7 +45,7 @@ public class LordOfTheRings {
                 System.out.print("\tYour option: ");
                 type = Console.getInt();
             }
-            fillCreatureInfo(name,shieldResistance);       
+            fillCreatureInfo();
             beastArmy.insertIntoArmy(myFactory.createCreature(type, name, shieldResistance));
             i++;
         } while (i <= size);
@@ -53,8 +55,9 @@ public class LordOfTheRings {
         AbstractCreaturerFactory myFactory = new HeroesFactory();
         int i = 1;
         do {
-            int  shieldResistance = 0, type = 0;
-            String name = "";
+            shieldResistance = 0;
+            type = 0;
+            name = "";
             System.out.println("=====ADD HEROE #" + i + "=====");
             System.out.println("Select a heroe type");
             System.out.println("1) Human");
@@ -64,7 +67,7 @@ public class LordOfTheRings {
                 System.out.print("\tYour option: ");
                 type = Console.getInt();
             }
-            fillCreatureInfo(name,shieldResistance);       
+            fillCreatureInfo();       
             heroeArmy.insertIntoArmy(myFactory.createCreature(type, name, shieldResistance));
             type = 0;
             name = "";
@@ -73,7 +76,7 @@ public class LordOfTheRings {
         } while (i <= size);
     }
 
-    private void fillCreatureInfo(String name, int shieldResistance) {
+    private void fillCreatureInfo() {
         System.out.print("Heroe name: ");
         name = Console.getString();
         while (shieldResistance < 50) {

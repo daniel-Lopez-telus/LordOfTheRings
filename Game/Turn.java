@@ -37,17 +37,11 @@ public class Turn {
     } 
 
     public void combat() {
-        int heroeNumberAttack = 0;
-        int beastNumberAttack = 0; 
-        int damage = 0;
-
         Creature heroeToBattle;
         Creature beastToBattle;
-    
-        // Determinar cuantos turnos seran ejecutados:
-        // cuando y hasta que los lifePoints de todo un army esten a cero entonces la condicion del while sera falsa
-        // la condicion del while seria una condicion compuesta de dos subcondiciones de heroeArmy y beastArmy
-        while (verifyArmyExistance(heroeArmy) == true && verifyArmyExistance(beastArmy) == true) {
+        boolean isAnyArmyAlive = true;
+        
+        while (isAnyArmyAlive) {
             for (Creature heroe : heroeArmy.getArmy()) {
                 if (heroe.getLifePoints() <= 0) {
                     continue;
@@ -66,6 +60,7 @@ public class Turn {
 
             heroeVsBeast(heroeToBattle, beastToBattle);
             //hacer una funcion que verifique los lifePoints de todas las criaturas de cada army 
+            isAnyArmyAlive = (verifyArmyExistance(heroeArmy) == true && verifyArmyExistance(beastArmy) == true);
         }
     }
 
@@ -97,20 +92,6 @@ public class Turn {
                 if (beastNumberAttack > heroe.getShieldResistance()) {
                     damage = beastNumberAttack - heroe.getShieldResistance();
                     heroe.setNewLifePoints(damage);
-                    // bestia ataca pero, si es orco, el nivel de armadura de su oponente se reduce en un 10% (se reduce solo para este turno de ataque)
-                    if (beast.getCharacterType() == Creatures.Types.ORC.ordinal()) { //el enum esta protected, mejor igualar a un numero)
-                        int weakerShieldResistance = beast.attackOpponent(heroe);
-                        if (beastNumberAttack > weakerShieldResistance) {
-                            damage = beastNumberAttack - weakerShieldResistance;
-                            heroe.setNewLifePoints(damage);
-                        }
-                    } else {
-                        beastNumberAttack += beast.attackOpponent(heroe);
-                        if (beastNumberAttack > heroe.getShieldResistance()) {
-                            damage = beastNumberAttack - heroe.getShieldResistance();
-                            heroe.setNewLifePoints(damage);
-                        }
-                    }
                 }
             }
         }

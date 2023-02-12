@@ -31,8 +31,8 @@ public class Turn {
     } 
 
     public void combat() {
-        Creature heroeToBattle;
-        Creature beastToBattle;
+        Creature heroeToBattle = null;
+        Creature beastToBattle = null;
         boolean isAnyArmyAlive = true;
 
         while (isAnyArmyAlive) {

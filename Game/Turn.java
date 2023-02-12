@@ -37,7 +37,7 @@ public class Turn {
         // Determinar cuantos turnos seran ejecutados:
         // cuando y hasta que los lifePoints de todo un army esten a cero entonces la condicion del while sera falsa
         // la condicion del while seria una condicion compuesta de dos subcondiciones de heroeArmy y beastArmy
-        while () {
+        while (verifyArmyExistance(heroeArmy) == true && verifyArmyExistance(beastArmy) == true) {
             for (Creature heroe : heroeArmy.getArmy()) {
                 if (heroe.getLifePoints() <= 0) {
                     continue;
@@ -73,6 +73,18 @@ public class Turn {
                 }
             }
         }
+    }
+
+    private boolean verifyArmyExistance(Army army){
+        int counter = army.getArmy().stream()
+            .filter(creature -> creature.getLifePoints() > 0)
+            .count();
+
+            if(counter > 0){
+                return true;
+            }else{
+                return false;
+            }
     }
 
     // este metodo me quedo sin usar

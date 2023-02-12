@@ -2,7 +2,7 @@ package Game.creatures;
 
 public abstract class Creature {
     
-    protected enum Creatures{
+    public enum Creatures{
         HUMAN,
         ELF,
         HOBBIT,

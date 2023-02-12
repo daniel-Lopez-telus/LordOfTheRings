@@ -2,6 +2,7 @@ package Game;
 
 import java.util.ArrayList;
 import Game.creatures.Creature;
+import Game.utils.Creatures;
 
 public class Turn {
 
@@ -17,7 +18,7 @@ public class Turn {
      * 2. DEFINIR LA CLASE COMBATHISTORY... PUEDE SER LA QUE VAYA IMPRIMIENDO LOS MENSAJES EN CONSOLA EN CADA TURNO PERO ES 
      * SOLAMENTE UNA IDEA!!
      * 3. EL METODO DEFEND DE LA CLASE CREATURE ES PROBABLE QUE YA NO SEA MAS UTIL, NUNCA LA USE. ESTUDIAR METODO COMBAT :)
-     * 4. ECHAR OJO A LA CONDICION beast.getCharacterType() == Creatures.ORC.ordinal() DE LA LINEA 61.
+     * 4. ECHAR OJO A LA CONDICION beast.getCharacterType() == CCreatures.Types.ORC.ordinal() DE LA LINEA 61.
      */
     
     //los ejercitos son clases que contienen arreglos de heroes y bestias
@@ -46,7 +47,7 @@ public class Turn {
         // Determinar cuantos turnos seran ejecutados:
         // cuando y hasta que los lifePoints de todo un army esten a cero entonces la condicion del while sera falsa
         // la condicion del while seria una condicion compuesta de dos subcondiciones de heroeArmy y beastArmy
-        while () {
+        while (verifyArmyExistance(heroeArmy) == true && verifyArmyExistance(beastArmy) == true) {
             for (Creature heroe : heroeArmy.getArmy()) {
                 if (heroe.getLifePoints() <= 0) {
                     continue;
@@ -96,9 +97,35 @@ public class Turn {
                 if (beastNumberAttack > heroe.getShieldResistance()) {
                     damage = beastNumberAttack - heroe.getShieldResistance();
                     heroe.setNewLifePoints(damage);
+                    // bestia ataca pero, si es orco, el nivel de armadura de su oponente se reduce en un 10% (se reduce solo para este turno de ataque)
+                    if (beast.getCharacterType() == Creatures.Types.ORC.ordinal()) { //el enum esta protected, mejor igualar a un numero)
+                        int weakerShieldResistance = beast.attackOpponent(heroe);
+                        if (beastNumberAttack > weakerShieldResistance) {
+                            damage = beastNumberAttack - weakerShieldResistance;
+                            heroe.setNewLifePoints(damage);
+                        }
+                    } else {
+                        beastNumberAttack += beast.attackOpponent(heroe);
+                        if (beastNumberAttack > heroe.getShieldResistance()) {
+                            damage = beastNumberAttack - heroe.getShieldResistance();
+                            heroe.setNewLifePoints(damage);
+                        }
+                    }
                 }
             }
         }
+    }
+
+    private boolean verifyArmyExistance(Army army){
+        long counter = army.getArmy().stream()
+            .filter(creature -> creature.getLifePoints() > 0)
+            .count();
+
+            if(counter > 0){
+                return true;
+            }else{
+                return false;
+            }
     }
 
     // este metodo me quedo sin usar

@@ -1,5 +1,7 @@
 package Game.creatures;
 
+import Game.utils.Creatures;
+
 public class Hobbit extends Heroe{
 
     public Hobbit(String name, int shieldResistance) {
@@ -52,7 +54,7 @@ public class Hobbit extends Heroe{
 
     @Override
     public int getCharacterType() {
-        return Creatures.HOBBIT.ordinal();
+        return Creatures.Types.HOBBIT.ordinal();
     }
 
 }

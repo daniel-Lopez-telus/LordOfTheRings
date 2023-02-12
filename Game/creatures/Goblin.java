@@ -1,5 +1,7 @@
 package Game.creatures;
 
+import Game.utils.Creatures;
+
 public class Goblin extends Beast{
 
     public Goblin(String name, int shieldResistance) {
@@ -44,7 +46,7 @@ public class Goblin extends Beast{
 
     @Override
     public int getCharacterType() {
-        return Creatures.GOBLIN.ordinal();
+        return Creatures.Types.GOBLIN.ordinal();
     }
 
     

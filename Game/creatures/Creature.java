@@ -26,4 +26,10 @@ public abstract class Creature {
 
     public abstract int getCharacterType();
 
+
+
+    public String getName() {
+        return this.name;
+    }
+
 }

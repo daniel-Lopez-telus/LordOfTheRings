@@ -8,17 +8,15 @@ public class Turn {
 
     /**
      * NOTAS:
-     * 1. QUE VA A SUCEDER SI TENEMOS UN CREATURE MUERTO EN CUALQUIER ARMY? ENTONCES EL CREATURE DEL OTRO LADO YA NO PELEA?
-     * R/ en cada turno un personaje de un ejercito atacara a un unico adversario del ejercito oponente. 
-     * se enfrentaran siempre los personajes situados en la misma posicion de cada ejercito. Si alguno de los ejercitois
+     * PROCESO DE BATALLA:
+     * se enfrentaran siempre los personajes situados en la misma posicion de cada ejercito. Si alguno de los ejercitos
      * dispone de mas efectivos que el contrario los personajes sobrantes no participaran en ese turno de batalla. 
      * 
+     * CUANDO UN PERSONAJE MUERA SE ELIMINARA DE SU POSICION Y SE DESPLAZARAN TIDOS SUS COMPANEROS EN POSICIONES POSTERIORES PARA 
+     * CUBRIR LA BAJA. DE ESA FORMA ALGUNO DE LOS PERSONAJES INACTIVOS PODRA PARTICIPAR EN LA BATALLA EN LOS SIGUIENTES TURNOS.
      * 
-     * 2. DEFINIR LA CLASE COMBATHISTORY... PUEDE SER LA QUE VAYA IMPRIMIENDO LOS MENSAJES EN CONSOLA EN CADA TURNO PERO ES 
-     * SOLAMENTE UNA IDEA!!
      */
-    
-    //los ejercitos son clases que contienen arreglos de heroes y bestias
+
     private Army heroeArmy;
     private Army beastArmy;
     private CombatHistory combatHistory;
@@ -31,11 +29,13 @@ public class Turn {
     } 
 
     public void combat() {
-        Creature heroeToBattle = null;
-        Creature beastToBattle = null;
+        Creature heroeToBattle;
+        Creature beastToBattle;
         boolean isAnyArmyAlive = true;
 
         while (isAnyArmyAlive) {
+            heroeToBattle = null;
+            beastToBattle = null;
             for (Creature heroe : heroeArmy.getArmy()) {
                 if (heroe.getLifePoints() <= 0) {
                     continue;
@@ -46,14 +46,17 @@ public class Turn {
 
             for (Creature beast : beastArmy.getArmy()) {
                 if (beast.getLifePoints() <= 0) {
-                continue;
+                    continue;
                 }
                 beastToBattle = beast;
                 break;
             }
-
-            heroeVsBeast(heroeToBattle, beastToBattle);
-            //hacer una funcion que verifique los lifePoints de todas las criaturas de cada army 
+            
+            // creo que si no retorno ningun beast de vuelta tengo un null y no se ejecuta la batalla es como si tuviera un sobrante que no pelea
+            if((heroeToBattle != null) && (beastToBattle != null)){
+                heroeVsBeast(heroeToBattle, beastToBattle);
+            }
+            
             isAnyArmyAlive = (verifyArmyExistance(heroeArmy) == true && verifyArmyExistance(beastArmy) == true);
         }
     }

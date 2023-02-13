@@ -34,6 +34,7 @@ public class Turn {
         ArrayList<Creature> myheroeArmy = heroeArmy.getArmy();
         ArrayList<Creature> mybeastArmy = beastArmy.getArmy();
         boolean isAnyArmyAlive = true;
+        int turnNumber = 0;
 
         while (isAnyArmyAlive) {
             heroeToBattle = null;
@@ -53,7 +54,7 @@ public class Turn {
                 }
 
                 boolean beastFlag = true;
-                while (j<beastArmy.getArmySize() && myFlag) {
+                while (j<beastArmy.getArmySize() && beastFlag) {
                     if(!(mybeastArmy.get(j).getLifePoints() <= 0)) {
                         beastToBattle = mybeastArmy.get(j);
                         beastFlag = false;
@@ -63,9 +64,8 @@ public class Turn {
 
                 //si no retorno ningun beast de vuelta tengo un null y no se ejecuta la batalla es como si tuviera un sobrante que no pelea
                 if((heroeToBattle != null) && (beastToBattle != null)){
-                    // insertar el numero de turno
+                    turnNumber++;
                     heroeVsBeast(heroeToBattle, beastToBattle);
-                    // 
                     heroeToBattle = null;
                     beastToBattle = null;
                 }

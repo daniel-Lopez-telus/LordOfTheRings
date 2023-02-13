@@ -34,9 +34,9 @@ public class Turn {
         ArrayList<Creature> myheroeArmy = heroeArmy.getArmy();
         ArrayList<Creature> mybeastArmy = beastArmy.getArmy();
         boolean isAnyArmyAlive = true;
-        int turnNumber = 0;
+        int turnNumber = 1;
 
-        while (isAnyArmyAlive) {
+        while (isAnyArmyAlive && turnNumber <= heroeArmy.getArmySize()) {
             heroeToBattle = null;
             beastToBattle = null;
             
@@ -64,8 +64,10 @@ public class Turn {
 
                 //si no retorno ningun beast de vuelta tengo un null y no se ejecuta la batalla es como si tuviera un sobrante que no pelea
                 if((heroeToBattle != null) && (beastToBattle != null)){
-                    turnNumber++;
+                    System.out.println("turn " + turnNumber);
+                    turnNumber += 1;
                     heroeVsBeast(heroeToBattle, beastToBattle);
+                    combatHistory.addToHistory(new CombatHistoryItem(turnNumber,heroeToBattle,beastToBattle));
                     heroeToBattle = null;
                     beastToBattle = null;
                 }
@@ -126,5 +128,9 @@ public class Turn {
     // a definir
     private void showTurnResults(int currenTurn, Creature heroe, Creature beast){
         //TODO
+    }
+
+    public void showTurnResults(){
+        combatHistory.showHistory();
     }
 }

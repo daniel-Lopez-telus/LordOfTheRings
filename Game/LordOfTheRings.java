@@ -18,6 +18,10 @@ public class LordOfTheRings {
         turn.combat();
     }
 
+    public void statistics(){
+        turn.showTurnResults();
+    }
+
     public void setup() {
         do {
             System.out.print("Enter army size: ");

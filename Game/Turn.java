@@ -66,7 +66,7 @@ public class Turn {
                 if((heroeToBattle != null) && (beastToBattle != null)){
                     System.out.println("Turn #" + turnNumber);
                     System.out.println(heroeToBattle.getName() + " (lifePoints=" + heroeToBattle.getLifePoints() + ") VS. " + beastToBattle.getName() + " (lifePoints=" + beastToBattle.getLifePoints() + ")");
-                    turnNumber+=;
+                    turnNumber++;
                     heroeVsBeast(heroeToBattle, beastToBattle);
                     combatHistory.addToHistory(new CombatHistoryItem(turnNumber,heroeToBattle,beastToBattle));
                     heroeToBattle = null;

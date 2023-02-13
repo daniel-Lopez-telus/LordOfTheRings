@@ -22,6 +22,10 @@ public class Army {
         return army;
     }
 
+    public Creature getCreature(int position) {
+        return army.get(position);
+    }
+
     public int getArmySize() {
         return this.army.size();
     }

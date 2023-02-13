@@ -12,7 +12,7 @@ public class Turn {
      * se enfrentaran siempre los personajes situados en la misma posicion de cada ejercito. Si alguno de los ejercitos
      * dispone de mas efectivos que el contrario los personajes sobrantes no participaran en ese turno de batalla. 
      * 
-     * CUANDO UN PERSONAJE MUERA SE ELIMINARA DE SU POSICION Y SE DESPLAZARAN TIDOS SUS COMPANEROS EN POSICIONES POSTERIORES PARA 
+     * CUANDO UN PERSONAJE MUERA SE ELIMINARA DE SU POSICION Y SE DESPLAZARAN ToDOS SUS COMPANEROS EN POSICIONES POSTERIORES PARA 
      * CUBRIR LA BAJA. DE ESA FORMA ALGUNO DE LOS PERSONAJES INACTIVOS PODRA PARTICIPAR EN LA BATALLA EN LOS SIGUIENTES TURNOS.
      * 
      */
@@ -31,35 +31,48 @@ public class Turn {
     public void combat() {
         Creature heroeToBattle;
         Creature beastToBattle;
+        // heroeArmy.getArmy().get(0);
+        ArrayList<Creature> myheroeArmy = heroeArmy.getArmy();
+        ArrayList<Creature> mybeastArmy = beastArmy.getArmy();
         boolean isAnyArmyAlive = true;
 
         while (isAnyArmyAlive) {
             heroeToBattle = null;
             beastToBattle = null;
-            for (Creature heroe : heroeArmy.getArmy()) {
-                if (heroe.getLifePoints() <= 0) {
-                    continue;
+            
+            int i = 0;
+            int j = 0;
+            while( (i<heroeArmy.getArmySize()) && (j<beastArmy.getArmySize()) ) {
+
+                boolean myFlag = true;
+                while (i<heroeArmy.getArmySize() && myFlag) {
+                    if (!(myheroeArmy.get(i).getLifePoints() <= 0)) {
+                        heroeToBattle = myheroeArmy.get(i);
+                        myFlag = false;
+                    }
+                    i++; //para tomar el siguiente heroe
                 }
-                heroeToBattle = heroe;
-                break;
+
+                boolean beastFlag = true;
+                while (j<beastArmy.getArmySize() && myFlag) {
+                    if(!(mybeastArmy.get(j).getLifePoints() <= 0)) {
+                        beastToBattle = mybeastArmy.get(j);
+                        beastFlag = false;
+                    }
+                    j++; //para tomar la siguiente bestia
+                }
+
+                //si no retorno ningun beast de vuelta tengo un null y no se ejecuta la batalla es como si tuviera un sobrante que no pelea
+                if((heroeToBattle != null) && (beastToBattle != null)){
+                    heroeVsBeast(heroeToBattle, beastToBattle);
+                    heroeToBattle = null;
+                    beastToBattle = null;
+                }
             }
 
-            for (Creature beast : beastArmy.getArmy()) {
-                if (beast.getLifePoints() <= 0) {
-                    continue;
-                }
-                beastToBattle = beast;
-                break;
-            }
-            
-            // creo que si no retorno ningun beast de vuelta tengo un null y no se ejecuta la batalla es como si tuviera un sobrante que no pelea
-            if((heroeToBattle != null) && (beastToBattle != null)){
-                heroeVsBeast(heroeToBattle, beastToBattle);
-            }
-            
             isAnyArmyAlive = (verifyArmyExistance(heroeArmy) == true && verifyArmyExistance(beastArmy) == true);
-        }
-    }
+        }      
+    }     
 
     private void heroeVsBeast(Creature heroe, Creature beast) {
         int heroeNumberAttack = 0;

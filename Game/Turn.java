@@ -25,7 +25,6 @@ public class Turn {
         this.heroeArmy = heroeArmy;
         this.beastArmy = beastArmy;
         this.combatHistory = new CombatHistory();
-        combatHistory = new CombatHistory();
     } 
 
     public void combat() {
@@ -64,7 +63,9 @@ public class Turn {
 
                 //si no retorno ningun beast de vuelta tengo un null y no se ejecuta la batalla es como si tuviera un sobrante que no pelea
                 if((heroeToBattle != null) && (beastToBattle != null)){
+                    // insertar el numero de turno
                     heroeVsBeast(heroeToBattle, beastToBattle);
+                    // 
                     heroeToBattle = null;
                     beastToBattle = null;
                 }
@@ -106,6 +107,8 @@ public class Turn {
                 }
             }
         }
+        // guardar turnNumber, y los datos de los personajes
+        combatHistory.addToHistory(null);
     }
 
     private boolean verifyArmyExistance(Army army){
@@ -120,7 +123,7 @@ public class Turn {
             }
     }
 
-    //definir que va hacer nuestro combatHistory y hacer un display por cada turno como en el ejemplo... solo son ideas de mi cabeza. metodo por definir
+    // a definir
     private void showTurnResults(int currenTurn, Creature heroe, Creature beast){
         //TODO
     }

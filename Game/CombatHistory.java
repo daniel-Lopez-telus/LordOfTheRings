@@ -2,9 +2,8 @@ package Game;
 
 import java.util.ArrayList;
 
-import Game.creatures.Creature;
-
 public class CombatHistory {
+    
     private ArrayList<CombatHistoryItem> combatHistory = new ArrayList<>();
 
     public void addToHistory(CombatHistoryItem item){
@@ -16,4 +15,5 @@ public class CombatHistory {
         combatHistory.forEach(item -> System.out.println(item.toString()));
     }
     
+
 }

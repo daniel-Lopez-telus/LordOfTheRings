@@ -3,6 +3,7 @@ package Game;
 import Game.creatures.Creature;
 
 public class CombatHistoryItem {
+
     private int turnNumber;
     private Creature heroe;
     private Creature beast;
@@ -14,5 +15,4 @@ public class CombatHistoryItem {
         "VS. " + beast.getName() + "(lifePoints=" + beast.getLifePoints() + ")";
     }
 
-    
 }

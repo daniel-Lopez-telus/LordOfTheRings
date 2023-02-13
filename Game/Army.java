@@ -5,9 +5,11 @@ import Game.creatures.Creature;
 
 public class Army {
     
+    private String armyName;
     ArrayList<Creature> army;
 
-    public Army(int size){
+    public Army(String name, int size){
+        this.armyName = name;
         this.army = new ArrayList<>(size);
     }
 
@@ -21,5 +23,9 @@ public class Army {
 
     public int getArmySize() {
         return this.army.size();
+    }
+
+    public String getArmyName() {
+        return this.armyName;
     }
 }

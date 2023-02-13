@@ -17,17 +17,13 @@ public class LordOfTheRings {
         turn.combat();
     }
 
-    public void statistics(){
-        turn.showTurnResults();
-    }
-
     public void setup() {
         do {
             System.out.print("Enter army size: ");
             size = Console.getInt();
         } while (size >= 10);
-        heroeArmy = new Army(size);
-        beastArmy = new Army(size);
+        heroeArmy = new Army("HEROES ARMY", size);
+        beastArmy = new Army("BEASTS ARMY", size);
         createHeroesArmy();
         createBeastsArmy();
         turn = new Turn(heroeArmy, beastArmy);

@@ -3,17 +3,16 @@ package Game;
 import java.util.ArrayList;
 
 public class CombatHistory {
-    
-    private ArrayList<CombatHistoryItem> combatHistory = new ArrayList<>();
 
-    public void addToHistory(CombatHistoryItem item){
+    private ArrayList<String> combatHistory = new ArrayList<>();
+
+    public void addToHistory(String item){
         combatHistory.add(item);
     }
 
-    public void showHistory(){
-        System.out.println("\t========AT THE END OF THE BATTLE========");
-        combatHistory.forEach(item -> System.out.println(item.toString()));
+    public void showCombatHistory(Army army){
+        combatHistory.forEach(System.out::println);
+        System.out.println("\n========END OF THE BATTLE========");
+        System.out.println(army.getArmyName() + " HAVE BEEN DEFEATED");
     }
-    
-
 }

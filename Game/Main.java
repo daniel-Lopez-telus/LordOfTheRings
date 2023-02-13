@@ -7,6 +7,5 @@ public class Main {
         LordOfTheRings myGame = new LordOfTheRings();
         myGame.setup();
         myGame.execute();
-        myGame.statistics();
     }
 }

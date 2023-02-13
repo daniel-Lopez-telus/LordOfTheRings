@@ -64,8 +64,9 @@ public class Turn {
 
                 //si no retorno ningun beast de vuelta tengo un null y no se ejecuta la batalla es como si tuviera un sobrante que no pelea
                 if((heroeToBattle != null) && (beastToBattle != null)){
-                    System.out.println("turn " + turnNumber);
-                    turnNumber += 1;
+                    System.out.println("Turn #" + turnNumber);
+                    System.out.println(heroeToBattle.getName() + " (lifePoints=" + heroeToBattle.getLifePoints() + ") VS. " + beastToBattle.getName() + " (lifePoints=" + beastToBattle.getLifePoints() + ")");
+                    turnNumber+=;
                     heroeVsBeast(heroeToBattle, beastToBattle);
                     combatHistory.addToHistory(new CombatHistoryItem(turnNumber,heroeToBattle,beastToBattle));
                     heroeToBattle = null;
@@ -110,7 +111,6 @@ public class Turn {
             }
         }
         // guardar turnNumber, y los datos de los personajes
-        combatHistory.addToHistory(null);
     }
 
     private boolean verifyArmyExistance(Army army){

@@ -10,7 +10,6 @@ public class LordOfTheRings {
     private Army heroeArmy;
     private Army beastArmy;
     private Turn turn;
-    private CombatHistory combatHistory;
     private int size = 0,type = 0, shieldResistance = 0;
     String name = "";
 

@@ -17,12 +17,10 @@ public class CombatHistoryItem {
     }
 
 
-
     @Override
     public String toString() {
-        return "[turnNumber=" + turnNumber + 
-        heroe.getName() + "(lifePoints=" + heroe.getLifePoints() + ") " + 
-        "VS. " + beast.getName() + "(lifePoints=" + beast.getLifePoints() + ")";
+        return "turnNumber=" + turnNumber + heroe.getName() + " (lifePoints=" + heroe.getLifePoints() + ") " + 
+        "VS. " + beast.getName() + " (lifePoints=" + beast.getLifePoints() + ")";
     }
 
 }

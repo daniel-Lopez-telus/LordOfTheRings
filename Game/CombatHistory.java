@@ -11,7 +11,7 @@ public class CombatHistory {
     }
 
     public void showHistory(){
-        System.out.println("\t========FINAL DE LA BATALLA========");
+        System.out.println("\t========AT THE END OF THE BATTLE========");
         combatHistory.forEach(item -> System.out.println(item.toString()));
     }
     

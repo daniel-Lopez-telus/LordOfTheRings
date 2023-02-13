@@ -1,10 +1,7 @@
 package Game;
 
 import java.util.ArrayList;
-
 import Game.creatures.Creature;
-
-
 
 public class Army {
     
@@ -20,10 +17,6 @@ public class Army {
 
     public ArrayList<Creature> getArmy() {
         return army;
-    }
-
-    public Creature getCreature(int position) {
-        return army.get(position);
     }
 
     public int getArmySize() {

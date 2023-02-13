@@ -9,5 +9,4 @@ public class Dice {
     public static int throwDice(int limit){
         return rn.nextInt(limit);
     }
-    
 }

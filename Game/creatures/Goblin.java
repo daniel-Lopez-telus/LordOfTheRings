@@ -1,6 +1,6 @@
 package Game.creatures;
 
-import Game.utils.Creatures;
+import Game.utils.Creatures.Types;
 
 public class Goblin extends Beast{
 
@@ -9,13 +9,6 @@ public class Goblin extends Beast{
         this.name = name;
         lifePoints = 200;
         this.shieldResistance = shieldResistance;
-    }
-
-    // El extraPower creo que ya no sera necesario
-    @Override
-    public boolean extraPower() {
-        // TODO Auto-generated method stub
-        return false;
     }
 
     @Override
@@ -39,16 +32,7 @@ public class Goblin extends Beast{
     }
 
     @Override
-    public int defend(Creature character) {
-        // TODO Auto-generated method stub
-        return 0;
+    public Types getCharacterType() {
+        return Types.GOBLIN;
     }
-
-    @Override
-    public int getCharacterType() {
-        return Creatures.Types.GOBLIN.ordinal();
-    }
-
-    
-    
 }

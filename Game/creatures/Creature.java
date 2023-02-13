@@ -1,6 +1,9 @@
 package Game.creatures;
 
+import Game.utils.Creatures.Types;
+
 public abstract class Creature {
+    
     protected String name;
     protected int lifePoints;
     protected int shieldResistance;
@@ -22,14 +25,9 @@ public abstract class Creature {
 
     public abstract int attackOpponent(Creature Character);
 
-    public abstract int defend(Creature Character);
-
-    public abstract int getCharacterType();
-
-
+    public abstract Types getCharacterType();
 
     public String getName() {
         return this.name;
     }
-
 }

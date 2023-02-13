@@ -1,6 +1,6 @@
 package Game.creatures;
 
-import Game.utils.Creatures;
+import Game.utils.Creatures.Types;
 
 public class Elf extends Heroe{
 
@@ -38,22 +38,15 @@ public class Elf extends Heroe{
 
     @Override
     public int attackOpponent(Creature creature) {
-        // si el oponente es un orco incrementa su potencia ofensiva, que es la calculada con los dados mas
-        // 10 unidades. 
-        if(this.hates() && creature.getCharacterType() == 4) {
+        // si el oponente es un orco incrementa su potencia ofensiva en 10 unidades. 
+        if(this.hates() && creature.getCharacterType() == Types.ORC) {
             return 10;
         }
         return 0;
     }
 
     @Override
-    public int defend(Creature creature) {
-        return 0;
+    public Types getCharacterType() {
+        return Types.ELF;
     }
-
-    @Override
-    public int getCharacterType() {
-        return Creatures.Types.ELF.ordinal();
-    }
-    
 }

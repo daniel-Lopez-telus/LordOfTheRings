@@ -68,6 +68,7 @@ public class Turn {
                     heroeToBattle = null;
                     beastToBattle = null;
                 }
+                //cuando i y j se salen del rango, ha terminado la ronda del turno, se sale del while y comienza otro turno 
             }
 
             isAnyArmyAlive = (verifyArmyExistance(heroeArmy) == true && verifyArmyExistance(beastArmy) == true);
@@ -91,7 +92,7 @@ public class Turn {
 
         //si la bestia que ha sido atacada ya se queda sin puntos no tiene sentido que esta ataque porque ya esta muerta
         if (!(beast.getLifePoints() <= 0)) {
-            if (beast.getCharacterType() == Creatures.ORC.ordinal()) { //el enum esta protected, mejor igualar a un numero)
+            if (beast.getCharacterType() == Creatures.Types.ORC) {
                 int weakerShieldResistance = beast.attackOpponent(heroe);
                 if (beastNumberAttack > weakerShieldResistance) {
                     damage = beastNumberAttack - weakerShieldResistance;
@@ -123,5 +124,4 @@ public class Turn {
     private void showTurnResults(int currenTurn, Creature heroe, Creature beast){
         //TODO
     }
-    
 }

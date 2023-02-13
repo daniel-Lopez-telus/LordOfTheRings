@@ -17,7 +17,4 @@ public abstract class Beast extends Creature{
     public int throwDices(){
         return Dice.throwDice(90);
     }
-    
-    public abstract boolean extraPower();
-
 }

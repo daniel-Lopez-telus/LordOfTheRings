@@ -1,9 +1,8 @@
 package Game.creatures;
 
-import Game.utils.Creatures;
+import Game.utils.Creatures.Types;
 
 public class Human extends Heroe {
-
 
     public Human(String name, int shieldResistance) {
         super(name, shieldResistance);
@@ -44,13 +43,7 @@ public class Human extends Heroe {
     }
 
     @Override
-    public int defend(Creature character) {
-        return 0;
-    }
-
-    @Override
-    public int getCharacterType() {
-        return Creatures.Types.HUMAN.ordinal();
-    }
-    
+    public Types getCharacterType() {
+        return Types.HUMAN;
+    }   
 }

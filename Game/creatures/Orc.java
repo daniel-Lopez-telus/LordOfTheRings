@@ -1,6 +1,6 @@
 package Game.creatures;
 
-import Game.utils.Creatures;
+import Game.utils.Creatures.Types;
 
 public class Orc extends Beast{
 
@@ -11,18 +11,10 @@ public class Orc extends Beast{
         this.shieldResistance = shieldResistance;
     }
 
-    //El extraPower creo que ya no sera utilizado 
-    @Override
-    public boolean extraPower() {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
     @Override
     public int getLifePoints() {
         return this.lifePoints;
     }
-
 
     @Override
     public int getShieldResistance() {
@@ -42,13 +34,7 @@ public class Orc extends Beast{
     }
 
     @Override
-    public int defend(Creature character) {
-        return 0;
+    public Types getCharacterType() {
+        return Types.ORC;
     }
-
-    @Override
-    public int getCharacterType() {
-        return Creatures.Types.ORC.ordinal();
-    }
-    
 }

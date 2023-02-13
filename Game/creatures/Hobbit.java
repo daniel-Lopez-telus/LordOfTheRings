@@ -1,6 +1,6 @@
 package Game.creatures;
 
-import Game.utils.Creatures;
+import Game.utils.Creatures.Types;
 
 public class Hobbit extends Heroe{
 
@@ -40,21 +40,14 @@ public class Hobbit extends Heroe{
     public int attackOpponent(Creature creature) {
         // estos personajes tienen un miedo especial a los goblins (trasgos) por lo que siempre que se enfrenten
         // perderan 5 unidades en su potencia ofensiva
-        if(this.fears() && creature.getCharacterType() == 5) {
+        if(this.fears() && creature.getCharacterType() == Types.GOBLIN) {
             return -5;
         }
         return 0;
     }
 
     @Override
-    public int defend(Creature creature) {
-        // TODO Auto-generated method stub
-        return 0;
+    public Types getCharacterType() {
+        return Types.HOBBIT;
     }
-
-    @Override
-    public int getCharacterType() {
-        return Creatures.Types.HOBBIT.ordinal();
-    }
-
 }

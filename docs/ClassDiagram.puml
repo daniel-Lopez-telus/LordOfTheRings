@@ -5,35 +5,37 @@ package com.lordoftherings{
         -Army heroeArmy
         -Army beastArmy
         -Turn turn
-        -CombatHistory combatHistory
+        -int size
+        -int type
+        -int shieldResistance
 
         +void setup()
         +void execute()
         +void createBeastsArmy()
         +void createHeroesArmy()
+        +void fillCreatureInfo()
     }
 
     class Turn{
         -Army heroeArmy
         -Army beastArmy
-        -int heroeAttack
-        -int beastAttack
-        -int damageDealt
         -CombatHistory combatHistory
 
-        +Turn(Army heroeArmy, Army beastArmy, CombatHistory combatHistory)
+        +Turn(Army heroeArmy, Army beastArmy)
         +void combat()
-        +int calculateDamageDealt()
-        +void showTurnResults(int currentTurn, Creature heroe, Creature beast)
+        +void heroeVsBeast()
+        +int calculateDamageDealt(Creature heroe, Creature beast)
+        +boolean verifyArmyExistance(Army army)
+        +hightLightBeforeCombat(Creature heroe, Creature beast, int turnNumber)
+        +hightLightAftereCombat(Creature heroe, Creature beast)
+        +void showTurnResults(Army army)
     }
 
     class CombatHistory{
-        -int turnNumber
-        -Creature winner
-        -Creature loser
-        -int damage
+        -ArrayList<String> combatHisory
 
-        +CombatHistory(int turnNumber, Creature winner, Creature loser, int damage)
+        +void addToHistory(String item)
+        +void showCombatHistory(Army army)    
     }
 
     package Creatures{
@@ -46,100 +48,113 @@ package com.lordoftherings{
         }
 
         abstract class Creature{
-            #enum CreatureType
             -String name
             -int lifePoints
             -int shieldResistance
 
-            +Creature(String name, int lifePoints, int shieldResistance)
+            +Creature(String name, int shieldResistance)
             +abstract boolean isHeroe()
-            +abstract int attackOpponent(Creature Creature)
-            +abstract int defend(Creature Creature)
             +abstract int throwDices()
-            +abstract int getCreatureType()
+            +abstract int getLifePoints()
+            +abstract int getShieldResistance()
+            +abstract void setNewLifePoints(int damage)
+            +abstract int attackOpponent(Creature character)
+            +abstract Types getCharacterType()
+            +String getName()
         }
 
         package heroes{
             abstract class Heroe{
+                +Heroe(String name, int shieldResistance)
                 +boolean isHeroe()
                 +int throwDices()
                 +abstract boolean fears(Creature Creature)
                 +abstract boolean hates(Creature Creature)
-                +abstract int attackOpponent(Creature Creature)
-                +abstract int defend(Creature Creature)
-                +abstract int getCreatureType()
             }
 
-            class Human{            
-                +int getCreatureType()
+            class Human{          
+                +Human(String name, int shieldResistance)
+                +boolean fears()
+                +boolean hates()
+                +int getLifePoints()
+                +int getShieldResistance()
+                +void setNewLifePoints(int damage)
                 +int attackOpponent(Creature Creature)
-                +int defend(Creature Creature)
-                +boolean fears(Creature Creature)
-                +boolean hates(Creature Creature)
+                +Types getCharacterType()
             }
 
             class Elf{
-                +int getCreatureType()
+                +Elf(String name, int shieldResistance)
+                +boolean fears()
+                +boolean hates()
+                +int getLifePoints()
+                +int getShieldResistance()
+                +void setNewLifePoints(int damage)
                 +int attackOpponent(Creature Creature)
-                +int defend(Creature Creature)
-                +boolean fears(Creature Creature)
-                +boolean hates(Creature Creature)
+                +Types getCharacterType()
             }
 
             class Hobbit{
-                +int getCreatureType()
+                +Hobbit(String name, int shieldResistance)
+                +boolean fears()
+                +boolean hates()
+                +int getLifePoints()
+                +int getShieldResistance()
+                +void setNewLifePoints(int damage)
                 +int attackOpponent(Creature Creature)
-                +int defend(Creature Creature)
-                +boolean fears(Creature Creature)
-                +boolean hates(Creature Creature)
+                +Types getCharacterType()
             }
         }
 
         package beasts{
             abstract class Beast{
+                +Beast(String name, int shieldResistance)
                 +boolean isHeroe()
                 +int throwDices()
-                +abstract boolean extraPower()
-                +abstract int attackOpponent(Creature Creature)
-                +abstract int defend(Creature Creature)
-                +abstract int getCreatureType()
             }
 
             class Orc{
-                +boolean extraPower()
-                +int attackOpponent(Creature Creature)
-                +int defend(Creature Creature)
-                +int getCreatureType()
+                +Orc(String name, int shieldResistance)
+                +int getLifePoints()
+                +int getShieldResistance()
+                +void setNewLifePoints(int damage)
+                +int attackOpponent(Creature heroe)
+                +Types getCharacterType()
             }
 
             class Goblin{
-                +boolean extraPower()
-                +int attackOpponent(Creature Creature)
-                +int defend(Creature Creature)
-                +int getCreatureType()
+                +Goblin(String name, int shieldResistance)
+                +int getLifePoints()
+                +int getShieldResistance()
+                +void setNewLifePoints(int damage)
+                +int attackOpponent(Creature heroe)
+                +Types getCharacterType()
             }
         }
     }
 
     class Army{
+        -String armyName
         -ArrayList<Creature> army
 
-        +Army()
+        +Army(String name, int size)
+        +void insertIntoArmy(Creature creature)
         +ArrayList<Creature> getArmy()
-        +void setArmy(Creature Creature)
+        +int getArmySize()
+        +String getArmyName()
     }
 
     package creatureFactory {
         interface AbstractCreatureFactory {
-        Creature createCreature()
+        Creature createCreature(int type, String name, int shieldResistance)
     }
 
     class HeroesFactory {
-        +Heroe createCreature()
+        +Heroe createCreature(int type, String name, int shieldResistance)
     }
 
     class BeastsFactory {
-        +Beast createCreature()
+        +Beast createCreature(int type, String name, int shieldResistance)
     }
     }
 }

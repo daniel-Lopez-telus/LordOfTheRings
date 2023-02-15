@@ -59,7 +59,7 @@ public class Turn {
                     beastToBattle = null;
                 }
             }
-            isAnyArmyAlive = (verifyArmyExistance(heroeArmy) == true && verifyArmyExistance(beastArmy) == true);
+            isAnyArmyAlive = (verifyArmyExistence(heroeArmy) == true && verifyArmyExistence(beastArmy) == true);
         }      
     }     
 
@@ -94,7 +94,7 @@ public class Turn {
         }
     }
 
-    private boolean verifyArmyExistance(Army army){
+    private boolean verifyArmyExistence(Army army){
         long counter = army.getArmy().stream()
             .filter(creature -> creature.getLifePoints() > 0)
             .count();
@@ -121,7 +121,7 @@ public class Turn {
         combatHistory.addToHistory(sb.toString());
     }
 
-    public void showTurnResults(Army army){
+    private void showTurnResults(Army army){
         combatHistory.showCombatHistory(army);
     }
 }

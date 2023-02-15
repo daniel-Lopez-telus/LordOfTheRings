@@ -24,7 +24,7 @@ public class Turn {
         boolean isAnyArmyAlive = true;
         int turnNumber = 0;
 
-        while (isAnyArmyAlive && turnNumber <= heroeArmy.getArmySize()) {
+        while (isAnyArmyAlive) {
 
             heroeToBattle = null;
             beastToBattle = null;

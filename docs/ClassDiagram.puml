@@ -35,7 +35,7 @@ package com.lordoftherings{
         -ArrayList<String> combatHisory
 
         +void addToHistory(String item)
-        +void showCombatHistory(Army army)    
+        +void showCombatHistory(Army army)
     }
 
     package Creatures{
@@ -72,7 +72,8 @@ package com.lordoftherings{
                 +abstract boolean hates(Creature Creature)
             }
 
-            class Human{          
+            class Human{
+
                 +Human(String name, int shieldResistance)
                 +boolean fears()
                 +boolean hates()
@@ -146,16 +147,16 @@ package com.lordoftherings{
 
     package creatureFactory {
         interface AbstractCreatureFactory {
-        Creature createCreature(int type, String name, int shieldResistance)
-    }
+            Creature createCreature(int type, String name, int shieldResistance)
+        }
 
-    class HeroesFactory {
-        +Heroe createCreature(int type, String name, int shieldResistance)
-    }
+        class HeroesFactory {
+            +Heroe createCreature(int type, String name, int shieldResistance)
+        }
 
-    class BeastsFactory {
-        +Beast createCreature(int type, String name, int shieldResistance)
-    }
+        class BeastsFactory {
+            +Beast createCreature(int type, String name, int shieldResistance)
+        }
     }
 }
 
